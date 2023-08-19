@@ -1,0 +1,38 @@
+投稿詳細
+  <div class="m-5">
+    <%= link_to user_path(@user) do %>
+    <div>by<%= @grant.user.name %></div>
+    <% end %>
+    <h3>補助金名</h3>
+    <div><%= @grant.name %></div>
+    <h3>申請経緯</h3>
+    <div><%= @grant.background %></div>
+    <h3>申請内容</h3>
+    <div><%= @grant.body %></div>
+
+    <% if @grant.user == current_user %>
+    <%= link_to "編集", edit_grant_path(@grant.id), class: 'btn btn-md btn-success text-white' %>
+    <%= link_to "削除", grant_path(@grant.id), method: :delete, class: 'btn btn-md btn-danger text-white', "data-confirm" => "本当に削除しますか？" %>
+    <% end %>
+  </div>
+
+  <div class="ml-5">
+    <div>
+      <p>コメント件数：<%= @grant.grant_comments.count %></p>
+      <% @grant.grant_comments.each do |grant_comment| %>
+          <%= grant_comment.user.name %><br>
+            <%= grant_comment.comment %><br>
+              <%= grant_comment.created_at.strftime('%Y/%m/%d') %>
+
+            <% if grant_comment.user == current_user %>
+              <%= link_to "削除", grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, class: 'btn btn-md btn-danger text-white' %>
+            <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with model: [@grant, @grant_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+  </div>
