@@ -1,0 +1,7 @@
+新着投稿一覧
+
+<% @grants.each do |grant| %>
+  <div class="m-5">
+    <div><%= grant.user.name %></div>
+  </div>
+<% end %>

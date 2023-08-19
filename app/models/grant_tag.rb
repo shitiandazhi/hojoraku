@@ -1,0 +1,2 @@
+class GrantTag < ApplicationRecord
+end
