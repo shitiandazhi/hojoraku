@@ -1,0 +1,56 @@
+<div><%= notice %><%= alert %></div>
+<div class="container text-center">
+  <h1 class="py-5">投稿一覧</h1>
+    <div class="row justify-content-center">
+<% if user_signed_in? %>
+        <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white col-lg-3' %>
+
+      <div class="container my-3">
+        <div class="row">
+          <% @grants.each do |grant| %>
+            <div class="card-group col-lg-4">
+              <div class="card my-3">
+                  <%= link_to grant_path(post_recipe) do %>
+                    <%= image_tag post_recipe.get_image(300, 300), class: "img-fluid" %>
+                  <% end %>
+                <div class="card-body">
+                  <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
+                  <div class="card-text"><%= grant.user.name %></div>
+                      <%= link_to grant_path(grant) do %>
+                        <p class="card-text">コメント件数：<%= grant.grant_comments.count %></p>
+                      <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+  <div class="container my-3">
+    <div class="row">
+      <% @grants.each do |grant| %>
+        <div class="card-group col-lg-4">
+          <div class="card my-3">
+              <%= link_to grant_path(grant) do %>
+                <%= image_tag grant.get_image(300, 300), class: "img-fluid" %>
+              <% end %>
+              <div class="card-body">
+                <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
+                 <div class="card-text mb-2"><%= grant.user.name %></div>
+                    <p class="card-text">
+                      <%= link_to post_recipe_keeps_path(post_recipe), method: :post do %>
+                        ♡<%= post_recipe.keeps.count %> 保存
+                      <% end %>
+                    </p>
+                    <%= link_to grant_path(grant) do %>
+                    <p>コメント件数：<%= grant.grant_comments.count %></p>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

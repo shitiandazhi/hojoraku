@@ -3,6 +3,8 @@
 
   <div class="row">
     <h5 class="bg-light text-dark">マイページ</h5>
+    <%= image_tag @user.get_profile_image(300, 300)%>
+         <h3 class="my-5"><%= @user.name %></h3>
   </div>
 
   <div class="row mb-3">
