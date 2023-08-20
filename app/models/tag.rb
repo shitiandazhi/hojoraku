@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
 
-  has_many :pgrants, dependent: :destroy
+  has_many :grants, dependent: :destroy
 
 end

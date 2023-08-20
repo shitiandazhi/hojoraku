@@ -8,7 +8,7 @@ class Admin::TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-    if @gag.save
+    if @tag.save
        @tags = Tag.all
        render :index
     else
