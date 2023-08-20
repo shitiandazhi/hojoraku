@@ -4,24 +4,8 @@
     <div class="row justify-content-center">
 <% if user_signed_in? %>
         <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white col-lg-3' %>
-
-      <div class="container my-3">
-        <div class="row">
-          <% @grants.each do |grant| %>
-            <div class="card-group col-lg-4">
-              <div class="card my-3">
-                <div class="card-body">
-                  <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
-                  <div class="card-text"><%= grant.user.name %></div>
-                      <%= link_to grant_path(grant) do %>
-                        <p class="card-text">コメント件数：<%= grant.grant_comments.count %></p>
-                      <% end %>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
 
 
   <div class="container my-3">

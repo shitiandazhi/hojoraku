@@ -1,0 +1,35 @@
+<div class="container text-center">
+  <h1 class="py-5">投稿一覧</h1>
+    <div class="row justify-content-center">
+
+        <div class="dropdown col-lg-3">
+          <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            タグ一覧
+          </button>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <% @tags.each do |tag| %>
+                <a><%= link_to tag.name, grants_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded p-2" %></a>
+              <% end %>
+            </div>
+        </div>
+    </div>
+
+      <div class="container my-3">
+        <div class="row">
+          <% @grants.each do |grant| %>
+            <div class="card-group col-lg-4">
+              <div class="card my-3">
+                <div class="card-body">
+                  <div class="card-title"><%= link_to grant.name, admin_grant_path(grant), class: "text-dark" %></div>
+                  <div class="card-text"><%= grant.user.name %></div>
+                    <div class="card-text"><%= grant.favorites.count %> 保存</div>
+                      <%= link_to admin_grant_path(grant) do %>
+                        <p class="card-text">コメント件数：<%= grant.grnat_comments.count %></p>
+                      <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
