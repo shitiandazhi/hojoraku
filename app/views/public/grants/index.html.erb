@@ -10,9 +10,6 @@
           <% @grants.each do |grant| %>
             <div class="card-group col-lg-4">
               <div class="card my-3">
-                  <%= link_to grant_path(post_recipe) do %>
-                    <%= image_tag post_recipe.get_image(300, 300), class: "img-fluid" %>
-                  <% end %>
                 <div class="card-body">
                   <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
                   <div class="card-text"><%= grant.user.name %></div>
@@ -32,20 +29,11 @@
       <% @grants.each do |grant| %>
         <div class="card-group col-lg-4">
           <div class="card my-3">
-              <%= link_to grant_path(grant) do %>
-                <%= image_tag grant.get_image(300, 300), class: "img-fluid" %>
-              <% end %>
               <div class="card-body">
                 <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
                  <div class="card-text mb-2"><%= grant.user.name %></div>
                     <p class="card-text">
-                      <%= link_to post_recipe_keeps_path(post_recipe), method: :post do %>
-                        ♡<%= post_recipe.keeps.count %> 保存
-                      <% end %>
-                    </p>
-                    <%= link_to grant_path(grant) do %>
-                    <p>コメント件数：<%= grant.grant_comments.count %></p>
-                  <% end %>
+                      <%= render 'index', grants: @grants, user: @user %>
               </div>
           </div>
         </div>

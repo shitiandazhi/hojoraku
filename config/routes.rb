@@ -23,8 +23,8 @@ namespace :admin do
     resources :grants do
     resources :grant_comments, only: [:destroy]
    end
-   resources :tag
-  end
+    resources :tag
+   end
 
  scope module: :public do
     root to: "homes#top"
@@ -37,8 +37,8 @@ namespace :admin do
         end
       end
     resources :grants do
-    resources :grant_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    resources :grant_comments, only: [:create, :destroy]
   end
   end
 end

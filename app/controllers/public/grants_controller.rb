@@ -2,6 +2,7 @@ class Public::GrantsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @grants = Grant.all
     @grant_comment = GrantComment.all
   end
 

@@ -1,0 +1,24 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Background</th>
+      <th>Body</th>
+      <th></th> <!-- 新しい列を追加 -->
+      <th>Comment Count</th> <!-- 列名を修正 -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @grants.each do |grant| %>
+      <tr>
+        <td><%= link_to grant.name, grant %></td>
+        <td><%= grant.background %></td>
+        <td><%= grant.body %></td>
+        <td id="favorite-btn_<%= grant.id %>"><!--いいね-->
+          <%= render "public/favorites/btn", grant: grant %></td>
+        <td><%= grant.grant_comments.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% grant.grant_comments.each do |grant_comment| %>
+    <tr>
+      <td>
+        <%= link_to user_path(grant_comment.user) do %>
+          <%= image_tag grant_comment.user.get_profile_image, size: "50x50" %><br>
+          <%= grant_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= grant_comment.comment %></td>
+      <td>
+        <% if grant_comment.user == current_user %>
+          <%= link_to "Destroy", grant_grant_comment_path(grant, grant_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger float-end" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+ </table>
