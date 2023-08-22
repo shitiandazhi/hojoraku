@@ -1,12 +1,15 @@
-<div><%= notice %><%= alert %></div>
 <div class="container text-center">
+  <div class="alert alert-info" role="alert">
+    <%= notice %><%= alert %>
+  </div>
   <h1 class="py-5">List of Submissions</h1>
   <div class="row justify-content-center">
     <% if user_signed_in? %>
-      <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white col-lg-3' %>
-    </div>
+      <div class="col-lg-3">
+        <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white' %>
+      </div>
+    <% end %>
   </div>
 
   <%= render 'index', grants: @grants, user: @user %>
-
-<% end %>
+</div>

@@ -15,9 +15,14 @@
         <td><%= link_to grant.name, grant %></td>
         <td><%= grant.background %></td>
         <td><%= grant.body %></td>
-        <td id="favorite-btn_<%= grant.id %>"><!--いいね-->
+        <td id="favorite-btn_<%= grant.id %>"><!-- いいね -->
           <%= render "public/favorites/btn", grant: grant %></td>
-        <td><%= grant.grant_comments.count %></td>
+        <td>
+          <div class="d-flex align-items-center">
+            <span class="mr-2"><%= grant.grant_comments.count %></span>
+            <span class="badge badge-primary">Comments</span>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

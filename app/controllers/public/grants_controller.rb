@@ -3,7 +3,7 @@ class Public::GrantsController < ApplicationController
 
   def index
     @grants = Grant.all
-    @grant_comment = GrantComment.all
+    @grant_comments = GrantComment.all
   end
 
   def show
@@ -18,13 +18,13 @@ class Public::GrantsController < ApplicationController
 
   def create
     @grant = Grant.new(grant_params)
-    @grant.user_id = current_user.id
-    # 投稿ボタンを押下した場合
+    @grant.user = current_user # user_id を直接代入する代わりに関連をセットする
     if params[:post]
       if @grant.save(context: :publicize)
         redirect_to grant_path(@grant), notice: "投稿成功！"
       else
-        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        flash.now[:alert] = "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+        render :new
       end
     end
   end
@@ -34,24 +34,23 @@ class Public::GrantsController < ApplicationController
   end
 
   def update
-    @grant= Grant.find(params[:id])
+    @grant = Grant.find(params[:id])
     if @grant.update(grant_params)
-      redirect_to grant_path(@grant), notice: "You have updated book successfully."
+      redirect_to grant_path(@grant), notice: "更新しました。"
     else
       render "edit"
     end
   end
 
   def destroy
-    post_recipe = PostRecipe.find(params[:id])
-    post_recipe.destroy
-    redirect_to post_recipes_path
+    @grant = Grant.find(params[:id]) # 変数名修正
+    @grant.destroy
+    redirect_to grants_path, notice: "削除しました。"
   end
 
-private
+  private
 
   def grant_params
-    params.require(:grant).permit(:user_id, :name, :background, :body,:application_status)
+    params.require(:grant).permit(:name, :background, :body, :application_status) # user_id を permit 対象から削除
   end
-
 end
