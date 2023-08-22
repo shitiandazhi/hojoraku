@@ -1,5 +1,6 @@
 class Grant < ApplicationRecord
 belongs_to :user
+belongs_to :tag
 
 has_many :favorites, dependent: :destroy
 has_many :grant_comments, dependent: :destroy

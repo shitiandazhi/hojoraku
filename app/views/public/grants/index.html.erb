@@ -1,28 +1,12 @@
 <div><%= notice %><%= alert %></div>
 <div class="container text-center">
-  <h1 class="py-5">投稿一覧</h1>
-    <div class="row justify-content-center">
-<% if user_signed_in? %>
-        <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white col-lg-3' %>
-                </div>
-              </div>
-
-
-  <div class="container my-3">
-    <div class="row">
-      <% @grants.each do |grant| %>
-        <div class="card-group col-lg-4">
-          <div class="card my-3">
-              <div class="card-body">
-                <div class="card-title"><%= link_to grant.name, grant_path(grant), class: "text-dark" %></div>
-                 <div class="card-text mb-2"><%= grant.user.name %></div>
-                    <p class="card-text">
-                      <%= render 'index', grants: @grants, user: @user %>
-              </div>
-          </div>
-        </div>
-      <% end %>
+  <h1 class="py-5">List of Submissions</h1>
+  <div class="row justify-content-center">
+    <% if user_signed_in? %>
+      <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white col-lg-3' %>
     </div>
   </div>
+
+  <%= render 'index', grants: @grants, user: @user %>
+
 <% end %>
-</div>
