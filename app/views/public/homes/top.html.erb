@@ -1,7 +1,9 @@
-新着投稿一覧
+<h2 style="text-decoration: underline;">新着投稿一覧</h2>
 
 <% @grants.each do |grant| %>
   <div class="m-5">
     <div><%= link_to grant.name, grant_path(grant) %></div>
   </div>
 <% end %>
+
+<div class="mb-5"></div> <!-- 投稿と投稿の間のスペースを作成 -->
