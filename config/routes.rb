@@ -28,6 +28,7 @@ namespace :admin do
 
  scope module: :public do
     root to: "homes#top"
+    get "search" => "searches#search"
       resources :users do
         collection do
           # 退会確認画面
