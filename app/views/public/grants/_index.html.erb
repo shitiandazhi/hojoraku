@@ -1,29 +1,47 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Background</th>
-      <th>Body</th>
-      <th></th> <!-- 新しい列を追加 -->
-      <th>Comment Count</th> <!-- 列名を修正 -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @grants.each do |grant| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>投稿一覧</title>
+  <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center py-5">投稿一覧</h1>
+  <table class='table table-hover table-inverse'>
+    <thead>
       <tr>
-        <td><%= link_to grant.name, grant %></td>
-        <td><%= grant.background %></td>
-        <td><%= grant.body %></td>
-        <td id="favorite-btn_<%= grant.id %>"><!-- いいね -->
-          <%= render "public/favorites/btn", grant: grant %></td>
-        <td>
-          <div class="d-flex align-items-center">
-            <span class="mr-2"><%= grant.grant_comments.count %></span>
-            <span class="badge badge-primary">Comments</span>
-          </div>
-        </td>
+        <th></th>
+        <th>Name</th>
+        <th>Background</th>
+        <th>Body</th>
+        <th>Comment Count</th> <!-- 列名を修正 -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @grants.each do |grant| %>
+        <tr>
+          <td><%= link_to grant.name, grant %></td>
+          <td><%= grant.background %></td>
+          <td><%= grant.body %></td>
+          <td id="favorite-btn_<%= grant.id %>"><!-- いいね -->
+            <%= render "public/favorites/btn", grant: grant %></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <span class="mr-2 align-middle"><%= grant.grant_comments.count %></span>
+              <span class="badge badge-primary align-middle">Comments</span>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+
+
+
+
+

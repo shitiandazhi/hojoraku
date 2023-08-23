@@ -1,20 +1,35 @@
-<h1>新規投稿</h1>
-<%= form_with model: @grant do |f| %>
-<div class="m-5">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>新規投稿</title>
+  <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
 
-  <h4>補助金名</h4>
-  <%= f.text_area :name %>
-
-  <h4>申請経緯</h4>
-  <%= f.text_area :background %>
-
-  <h4>申請内容</h4>
-  <%= f.text_area :body %>
-
-
-    <div class="row mt-4 pb-5">
-    <div class="form-inline mx-auto">
-      <%= f.submit 'レシピを公開', :name => 'post', class: 'mr-5 btn btn-sm btn-warning text-white' %>
+<div class="container">
+  <h1>新規投稿</h1>
+  <%= form_with model: @grant do |f| %>
+    <div class="form-section">
+      <h4>補助金名</h4>
+      <%= f.text_area :name, class: 'form-control' %>
     </div>
+    <div class="form-section">
+      <h4>申請経緯</h4>
+      <%= f.text_area :background, class: 'form-control' %>
+    </div>
+    <div class="form-section">
+      <h4>申請内容</h4>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <div class="form-section">
+      <h4>タグ</h4>
+      <%= f.collection_select :tag_id, Tag.all, :id, :name, { prompt: 'タグを選択してください' }, class: 'form-control' %>
+    </div>
+    <div class="form-section">
+      <%= f.submit '投稿する', :name => 'post', class: 'btn btn-warning text-white' %>
+    </div>
+  <% end %>
 </div>
-<% end %>
+
+</body>
+</html>
