@@ -1,4 +1,4 @@
-<h2>Results index</h2>
+<h2>検索結果</h2>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
@@ -15,9 +15,9 @@
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
-          <td><%= grant.name %></td>
-          <td><%= grant.background %></td>
-          <td><%= grant.body %></td>
+          <td><span class="text-white"><%= grant.name %></span></td>
+          <td><span class="text-white"><%= grant.background %></span></td>
+          <td><span class="text-white"><%= grant.body %></span></td>
         </tr>
       <% end %>
     </tbody>
