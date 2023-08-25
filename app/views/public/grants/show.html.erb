@@ -1,58 +1,55 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="grant-details">
-        <%= link_to user_path(@user) do %>
-          <div>by <%= @grant.user.name %></div>
-        <% end %>
-        <h3>補助金名</h3>
-        <div><%= @grant.name %></div>
-        <h3>申請経緯</h3>
-        <div><%= @grant.background %></div>
-        <h3>申請内容</h3>
-        <div><%= @grant.body %></div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>補助金詳細</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="grant-details">
+          <h3>補助金名</h3>
+          <div><%= @grant.name %></div>
+          <h3>申請経緯</h3>
+          <div><%= @grant.background %></div>
+          <h3>申請内容</h3>
+          <div><%= @grant.body %></div>
 
-       <% if @grant.user == current_user %>
-  <div class="mt-3">
-    <%= link_to "編集", edit_grant_path(@grant.id), class: 'btn btn-custom-success text-white' %>
-    <%= link_to "削除", grant_path(@grant.id), method: :delete, class: 'btn btn-custom-danger text-white', "data-confirm" => "本当に削除しますか？" %>
-  </div>
-<% end %>
-      </div>
-      <style>
-      /* カスタムクラスのスタイルを定義 */
-.btn-custom-success {
-  background-color: #28a745; /* 編集ボタンの色 */
-  border-color: #28a745; /* ボーダーの色 */
-}
+          <% if @grant.user == current_user %>
+            <div class="mt-3">
+              <%= link_to "編集", edit_grant_path(@grant.id), class: 'btn btn-custom-success text-white' %>
+              <%= link_to "削除", grant_path(@grant.id), method: :delete, class: 'btn btn-custom-danger text-white', "data-confirm" => "本当に削除しますか？" %>
+            </div>
+          <% end %>
+        </div>
 
-.btn-custom-danger {
-  background-color: #dc3545; /* 削除ボタンの色 */
-  border-color: #dc3545; /* ボーダーの色 */
-}
-</style>
+        <div class="comments mt-5">
+          <h3>コメント (<%= @grant.grant_comments.count %>)</h3>
+          <% @grant.grant_comments.each do |grant_comment| %>
+            <div class="comment mb-3">
+              <strong><%= grant_comment.user.name %></strong>
+              <p><%= grant_comment.comment %></p>
+              <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
 
-      <div class="comments mt-5">
-        <h3>コメント (<%= @grant.grant_comments.count %>)</h3>
-        <% @grant.grant_comments.each do |grant_comment| %>
-          <div class="comment mb-3">
-            <strong><%= grant_comment.user.name %></strong>
-            <p><%= grant_comment.comment %></p>
-            <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
+              <% if grant_comment.user == current_user %>
+                <%= link_to "削除", grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, class: 'btn btn-danger text-white' %>
+              <% end %>
+            </div>
+          <% end %>
 
-            <% if grant_comment.user == current_user %>
-              <%= link_to "削除", grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, class: 'btn btn-danger text-white' %>
+          <div class="comment-form mt-4">
+            <%= form_with model: [@grant, @grant_comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+              <%= f.submit "送信する", class: 'btn btn-primary text-white' %>
+            <% end %>
+            <%= link_to user_path(@user) do %>
+              <div>マイページ</div>
             <% end %>
           </div>
-        <% end %>
-
-        <div class="comment-form mt-4">
-          <%= form_with model: [@grant, @grant_comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", class: 'btn btn-primary text-white' %>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
+</body>
+</html>

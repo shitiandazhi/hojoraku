@@ -12,24 +12,24 @@
     <thead>
       <tr>
         <th></th>
-        <th>Name</th>
-        <th>Background</th>
-        <th>Body</th>
-        <th>Comment Count</th> <!-- 列名を修正 -->
+        <th><span class="text-white">Name</span></th>
+        <th><span class="text-white">Background</span></th>
+        <th><span class="text-white">Body</span></th>
+        <th><span class="text-white">Comment Count</span></th> <!-- 列名を修正 -->
       </tr>
     </thead>
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
           <td><%= link_to grant.name, grant %></td>
-          <td><%= grant.background %></td>
-          <td><%= grant.body %></td>
+          <td><span class="text-white"><%= grant.background %></span></td>
+          <td><span class="text-white"><%= grant.body %></span></td>
           <td id="favorite-btn_<%= grant.id %>"><!-- いいね -->
             <%= render "public/favorites/btn", grant: grant %></td>
           <td>
             <div class="d-flex align-items-center">
-              <span class="mr-2 align-middle"><%= grant.grant_comments.count %></span>
-              <span class="badge badge-primary align-middle">Comments</span>
+              <span class="mr-2 align-middle text-white"><%= grant.grant_comments.count %></span>
+              <span class="badge badge-primary align-middle text-white">Comments</span>
             </div>
           </td>
         </tr>
@@ -40,8 +40,6 @@
 
 </body>
 </html>
-
-
 
 
 
