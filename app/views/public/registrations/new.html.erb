@@ -1,80 +1,84 @@
-<%= render "public/shared/links" %>
 <div class="container px-4">
-  <div class="row justify-content-start ">
-    <div class="col-sm-3 offset-1 g-3 my-4">
-      <span style="background-color:#DCDCDC">　新規会員登録　</span>
+
+
+  <div class="row justify-content-center my-4">
+    <div class="col-sm-6">
+      <span class=>新規会員登録</span>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <%= form_with model: @user, url: user_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-    <div class="container">
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :法人形態 %></div>
-        <div class="field col-md-2 ">        <%= f.text_field :company_from, autofocus: true, placeholder:"例　株式会社(個人事業主は記入不要)", class:"form-control"%></div>
+    <div class="row p-2">
+      <div class="col-md-6">
+        <%= f.label :法人形態 %>
+        <%= f.text_field :company_from, autofocus: true, placeholder: "例　株式会社(個人事業主は記入不要)", class: "form-control" %>
       </div>
-
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :法人名 %></div>
-        <div class="field col-md-2 ">        <%= f.text_field :name, placeholder:"□△商事（個人事業主は氏名）",class:"form-control" %></div>
-      </div>
-
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :フリガナ %></div>
-        <div class="field col-md-2 ">        <%= f.text_field :name_kana, placeholder:"シカクサンカクショウジ",class:"form-control" %></div>
-      </div>
-
-    　<div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :法人番号 %></div>
-        <div class="field col-md-2 ">        <%= f.text_field :company_number, placeholder:"0000000000000",class:"form-control" %></div>
-      </div>
-
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :メールアドレス %></div>
-        <div class="field col-md-2 offset-1"><%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com",class:"form-control" %></div>
-      </div>
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :"郵便番号(ハイフンなし)" %></div>
-        <div class="field col-md-2 offset-1"><%= f.text_field :post_code, placeholder:"0000000",class:"form-control"%></div>
-      </div>
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :住所 %></div>
-        <div class="field col-md-5 offset-1"><%= f.text_field :address, placeholder:"東京都渋谷区神園町0-0",class:"form-control"%></div>
-      </div>
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :"電話番号(ハイフンなし)" %></div>
-        <div class="field col-md-2 offset-1"><%= f.text_field :phonenumber, placeholder:"0000000000" ,class:"form-control"%></div>
-      </div>
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
-          <% end %></div>
-        <div class="field col-md-2 offset-1"><%= f.password_field :password, autocomplete: "new-password",class:"form-control" %></div>
-      </div>
-      <div class="row p-2">
-        <div class="label col-md-2 offset-1"><%= f.label :"パスワード(確認用)" %></div>
-        <div class="field col-md-2 offset-1"><%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %></div>
+      <div class="col-md-6">
+        <%= f.label :法人名 %>
+        <%= f.text_field :name, placeholder: "□△商事（個人事業主は氏名）", class: "form-control" %>
       </div>
     </div>
 
-  <div class="row justify-content-start">
-    <div class="col-4 m-auto">
-      <button type="subimit" class="btn btn-success btn-sm">新規登録</div>
-    </div>
-  </div>
-<% end %>
-
-  <div class="row justify-content-start ">
-    <div class="col-sm-3 offset-1 g-3 my-4">
-      <span style="background-color:#DCDCDC">　既に登録済みの方　</span>
-    </div>
-    <div class="row justify-content-start">
-      <div class="col-sm-6 offset-2">
-        <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+    <div class="row p-2">
+      <div class="col-md-6">
+        <%= f.label :フリガナ %>
+        <%= f.text_field :name_kana, placeholder: "シカクサンカクショウジ", class: "form-control" %>
       </div>
+      <div class="col-md-6">
+        <%= f.label :法人番号 %>
+        <%= f.text_field :company_number, placeholder: "0000000000000", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row p-2">
+      <div class="col-md-6">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :"郵便番号(ハイフンなし)" %>
+        <%= f.text_field :post_code, placeholder: "0000000", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row p-2">
+      <div class="col-md-6">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, placeholder: "東京都渋谷区神園町0-0", class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :"電話番号(ハイフンなし)" %>
+        <%= f.text_field :phonenumber, placeholder: "0000000000", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row p-2">
+      <div class="col-md-6">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :"パスワード(確認用)" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-4">
+        <%= f.submit "新規登録", class: "btn btn-success btn-sm btn-block" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center my-4">
+    <div class="col-sm-6">
+      <span class=>既に登録済みの方</span>
+      <p><%= render "public/shared/links" %>からログインを行ってください。</p>
     </div>
   </div>
 </div>
