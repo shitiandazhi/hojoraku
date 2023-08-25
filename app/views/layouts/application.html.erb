@@ -126,7 +126,11 @@
           </li>
 
           <li>
-            <%= link_to "ログイン", new_user_session_path ,class: "text-light mx-5" %>
+            <%= link_to "ログイン(利用者)", new_user_session_path ,class: "text-light mx-5" %>
+          </li>
+
+          <li>
+            <%= link_to "ログイン(管理者)", new_admin_session_path, class: "text-light mx-5" %>
           </li>
         <% end %>
       </ul>
