@@ -1,45 +1,89 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h3 class="text-center mt-5", style="margin:auto; width:200px;">会員一覧</h3>
+    <h3 class="text-center mt-5" style="margin:auto; width:200px;">会員一覧</h3>
     <div class="col-10 mx-auto">
       <table class="table mt-5">
-      <thead  class="table-secondary">
-        <tr>
-          <th>登録日</th>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-             <td>
-                <%= user.created_at.strftime('%Y/%m/%d') %>
-             </td>
-             <td>
-                <%= user.id %>
-             </td>
-             <td>
+        <thead class="table-secondary">
+          <tr>
+            <th style="color: white;">登録日</th>
+            <th style="color: white;">会員ID</th>
+            <th style="color: white;">氏名</th>
+            <th style="color: white;">メールアドレス</th>
+            <th style="color: white;">ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td style="color: white;"><%= user.created_at.strftime('%Y/%m/%d') %></td>
+            <td style="color: white;"><%= user.id %></td>
+            <td>
               <%= link_to admin_user_path(user) do %>
-                <%= user.name %>
+                <span style="color: white;"><%= user.name %></span>
               <% end %>
-             </td>
-             <td>
-                <%= user.email %>
-             </td>
-             <td>
-                <% if user.is_deleted == true%>
-                  <p class="text-danger">退会済</p>
-                <% else %>
-                  <p class="text-success">有効</p>
-                <% end %>
-             </td>
-         </tr>
-        <% end %>
-      </tbody>
-    </table>
+            </td>
+            <td style="color: white;"><%= user.email %></td>
+            <td>
+              <% if user.is_deleted == true %>
+                <p class="text-danger">退会済</p>
+              <% else %>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <h4 style="color: white;">投稿数の前日比・前週比</h4>
+      <div class="table_width">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="color: white;">今日の投稿</th>
+              <th style="color: white;">昨日の投稿</th>
+              <th style="color: white;">前日比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color: white;"><%= @today_grant.count %></td>
+              <td style="color: white;"><%= @yesterday_grant.count %></td>
+              <% if @yesterday_grant.count == 0 %>
+                <td style="color: white;">前日の投稿はなし</td>
+              <% else %>
+                <td style="color: white;">
+                  <% @the_day_before = @today_grant.count.to_f / @yesterday_grant.count %>
+                  <%= (@the_day_before * 100).round %>%
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="color: white;">今週の投稿</th>
+              <th style="color: white;">先週の投稿</th>
+              <th style="color: white;">先週比</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color: white;"><%= @this_week_grant.count %></td>
+              <td style="color: white;"><%= @last_week_grant.count %></td>
+              <% if @last_week_grant.count == 0 %>
+                <td style="color: white;">先週の投稿はなし</td>
+              <% else %>
+                <td style="color: white;">
+                  <% @the_week_before = @this_week_grant.count.to_f / @last_week_grant.count %>
+                  <%= (@the_week_before * 100).round %>%
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
