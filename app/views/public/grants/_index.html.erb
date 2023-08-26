@@ -11,25 +11,24 @@
   <table class='table table-hover table-inverse'>
     <thead>
       <tr>
-        <th></th>
-        <th><span class="text-white">Name</span></th>
-        <th><span class="text-white">Background</span></th>
-        <th><span class="text-white">Body</span></th>
-        <th><span class="text-white">Comment Count</span></th> <!-- 列名を修正 -->
+        <th>名前</th>
+        <th>バックグラウンド</th>
+        <th>本文</th>
+        <th>コメント数</th>
+        <th>いいね</th>
       </tr>
     </thead>
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
           <td><%= link_to grant.name, grant %></td>
-          <td><span class="text-white"><%= grant.background %></span></td>
-          <td><span class="text-white"><%= grant.body %></span></td>
-          <td id="favorite-btn_<%= grant.id %>"><!-- いいね -->
+          <td><%= grant.background %></td>
+          <td><%= grant.body %></td>
+          <td><%= grant.grant_comments.count %>件</td>
+          <td id="favorite-btn_<%= grant.id %>">
             <%= render "public/favorites/btn", grant: grant %></td>
           <td>
             <div class="d-flex align-items-center">
-              <span class="mr-2 align-middle text-white"><%= grant.grant_comments.count %></span>
-              <span class="badge badge-primary align-middle text-white">Comments</span>
             </div>
           </td>
         </tr>
@@ -40,6 +39,5 @@
 
 </body>
 </html>
-
 
 
