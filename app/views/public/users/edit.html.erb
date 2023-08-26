@@ -1,6 +1,6 @@
 プロフィール編集
 
-  <%= form_with model: @user do |f| %>
+  <%= form_with model: @user, url: user_session_path(@user), local: true do |f| %>
 
     <h4>法人形式</h4>
     <%= f.text_field :company_from %>

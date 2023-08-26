@@ -29,4 +29,5 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to root_path, notice: "ゲストユーザーでログインしました。"
   end
+
 end
