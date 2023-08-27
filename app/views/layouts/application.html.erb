@@ -73,7 +73,7 @@
 <body>
   <header>
     <div>
-      <%= link_to 'hojoraku', root_path, class: "text-light text-decoration-none" %>
+      <h2><%= link_to 'hojoraku', root_path, class: "text-light text-decoration-none" %></h2>
     </div>
 
     <nav class="navbar-nav ml-auto">
@@ -141,10 +141,10 @@
     <%= yield %>
   </main>
 
-  <footer>
-    <div class="text-center pt-5">
-      <h4 class="logo"><%= link_to 'hojoraku', root_path, class: "text-dark text-decoration-none" %></h4>
-    </div>
-  </footer>
+  <footer style="background-color: #f0f6fa;">
+   <div class="text-center py-5">
+    <h4 class="logo"><%= link_to 'hojoraku', root_path, class: "text-black text-decoration-none" %></h4>
+  </div>
+</footer>
 </body>
 </html>
