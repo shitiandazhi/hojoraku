@@ -12,6 +12,11 @@
   </div>
   <%= link_to "編集する", edit_user_path, class: "btn btn-sm btn-custom-color col-md-1" %>
 </div>
+<% if user_signed_in? %>
+      <div class="col-lg-3">
+        <%= link_to "投稿する", new_grant_path, class: 'btn btn-md btn-success text-white' %>
+      </div>
+    <% end %>
 
   <div class="row">
     <div class="col-md-7">

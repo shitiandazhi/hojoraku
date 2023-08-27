@@ -1,6 +1,6 @@
 class Admin::GrantsController < ApplicationController
   def index
-    @grant_comment = GrantComment.all
+    @grant_comment = GrantComment.page(params[:page])
     @tags = Tag.all
     if params[:tag_id].present?
       # Tagモデルのidを使用するのが適切です。また、LIKE演算子のパターンが間違っていましたので修正しました。

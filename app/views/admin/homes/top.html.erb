@@ -80,6 +80,7 @@
                   <%= (@the_week_before * 100).round %>%
                 </td>
               <% end %>
+              <%= paginate @grants %>
             </tr>
           </tbody>
         </table>

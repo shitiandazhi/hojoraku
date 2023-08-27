@@ -2,8 +2,8 @@ class Public::GrantsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @grants = Grant.all
-    @grant_comments = GrantComment.all
+    @grants = Grant.page(params[:page])
+    @grant_comments = GrantComment.page(params[:page])
   end
 
   def show

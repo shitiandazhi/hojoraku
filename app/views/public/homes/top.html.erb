@@ -1,9 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
 <h2 style="text-decoration: underline;">新着投稿一覧</h2>
 
-<% @grants.each do |grant| %>
-  <div class="m-5">
-    <div><%= link_to grant.name, grant_path(grant) %></div>
-  </div>
-<% end %>
+  <link rel="stylesheet" href="path/to/your/styles.css">
+</head>
+<body>
 
-<div class="mb-5"></div> <!-- 投稿と投稿の間のスペースを作成 -->
+<div class="container">
+  <h1 class="text-center py-5" style="color: white;"></h1>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th style="color: white;">名前</th>
+        <th style="color: white;">バックグラウンド</th>
+        <th style="color: white;">本文</th>
+        <th style="color: white;">コメント数</th>
+        <th style="color: white;">いいね</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @grants.each do |grant| %>
+        <tr>
+          <td><%= link_to grant.name, grant %></td>
+          <td style="color: white;"><%= grant.background %></td>
+          <td style="color: white;"><%= grant.body %></td>
+          <td style="color: white;"><%= grant.grant_comments.count %>件</td>
+          <td id="favorite-btn_<%= grant.id %>">
+            <%= render "public/favorites/btn", grant: grant %></td>
+          <td>
+            <div class="d-flex align-items-center">
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

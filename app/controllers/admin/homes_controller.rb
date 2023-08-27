@@ -1,6 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
     @users = User.order(created_at: :desc)
+    @grants = Grant.order(created_at: :desc).page(params[:page])
     @today_grant = Grant.created_today
     @yesterday_grant = Grant.created_yesterday
     @this_week_grant = Grant.created_this_week
