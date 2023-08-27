@@ -1,3 +1,9 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+/* styles.css などのCSSファイル内 */
+.btn-custom-color {
+  background-color: #6610f2; /* カスタムの背景色を設定 */
+  color: #ffffff; /* ボタンテキストの色 */
+  /* その他のボタンに関するスタイル設定 */
+}

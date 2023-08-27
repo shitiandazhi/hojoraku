@@ -4,30 +4,30 @@
   <title>補助金詳細</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: #e6f2f8;">
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
-        <div class="grant-details">
-          <h3>補助金名</h3>
+        <div class="grant-details bg-light p-4 rounded">
+          <h3 class="text-primary">補助金名</h3>
           <div><%= @grant.name %></div>
-          <h3>申請経緯</h3>
+          <h3 class="text-primary mt-3">申請経緯</h3>
           <div><%= @grant.background %></div>
-          <h3>申請内容</h3>
+          <h3 class="text-primary mt-3">申請内容</h3>
           <div><%= @grant.body %></div>
 
           <% if @grant.user == current_user %>
             <div class="mt-3">
-              <%= link_to "編集", edit_grant_path(@grant.id), class: 'btn btn-custom-success ' %>
-              <%= link_to "削除", grant_path(@grant.id), method: :delete, class: 'btn btn-custom-danger ', "data-confirm" => "本当に削除しますか？" %>
+              <%= link_to "編集", edit_grant_path(@grant.id), class: 'btn btn-outline-success' %>
+              <%= link_to "削除", grant_path(@grant.id), method: :delete, class: 'btn btn-outline-danger', "data-confirm" => "本当に削除しますか？" %>
             </div>
           <% end %>
         </div>
 
-        <div class="comments mt-5">
-          <h3>コメント (<%= @grant.grant_comments.count %>)</h3>
+        <div class="comments bg-white mt-5 p-4 rounded">
+          <h3 class="text-primary">コメント (<%= @grant.grant_comments.count %>)</h3>
           <% @grant.grant_comments.each do |grant_comment| %>
-            <div class="comment mb-3">
+            <div class="comment mb-3 p-3 bg-light rounded">
               <strong><%= grant_comment.user.name %></strong>
               <p><%= grant_comment.comment %></p>
               <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
@@ -43,8 +43,8 @@
               <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
               <%= f.submit "送信する", class: 'btn btn-primary text-white' %>
             <% end %>
-            <%= link_to user_path(@user) do %>
-              <div>マイページ</div>
+            <%= link_to user_path(@user), class: 'mt-3 d-block text-primary' do %>
+              マイページへ戻る
             <% end %>
           </div>
         </div>
