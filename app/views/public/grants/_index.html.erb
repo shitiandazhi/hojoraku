@@ -7,24 +7,24 @@
 <body>
 
 <div class="container">
-  <h1 class="text-center py-5">投稿一覧</h1>
+  <h1 class="text-center py-5" style="color: white;"></h1>
   <table class='table table-hover table-inverse'>
     <thead>
       <tr>
-        <th>名前</th>
-        <th>バックグラウンド</th>
-        <th>本文</th>
-        <th>コメント数</th>
-        <th>いいね</th>
+        <th style="color: white;">名前</th>
+        <th style="color: white;">バックグラウンド</th>
+        <th style="color: white;">本文</th>
+        <th style="color: white;">コメント数</th>
+        <th style="color: white;">いいね</th>
       </tr>
     </thead>
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
           <td><%= link_to grant.name, grant %></td>
-          <td><%= grant.background %></td>
-          <td><%= grant.body %></td>
-          <td><%= grant.grant_comments.count %>件</td>
+          <td style="color: white;"><%= grant.background %></td>
+          <td style="color: white;"><%= grant.body %></td>
+          <td style="color: white;"><%= grant.grant_comments.count %>件</td>
           <td id="favorite-btn_<%= grant.id %>">
             <%= render "public/favorites/btn", grant: grant %></td>
           <td>
@@ -39,5 +39,4 @@
 
 </body>
 </html>
-
 

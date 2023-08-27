@@ -2,44 +2,44 @@
 <div class="container">
 
   <div class="row">
-    <h5 class="bg-light text-dark">マイページ</h5>
+    <h5>マイページ</h5>
          <h3 class="my-5"><%= @user.name %></h3>
   </div>
 
   <div class="row mb-3">
-    <div class="col-md-2">
-      <strong>登録情報</strong>
-    </div>
-    <%= link_to "編集する", edit_user_path, class: "btn btn-success btn-sm col-md-1" %>
+  <div class="col-md-2">
+    <strong>登録情報</strong>
   </div>
+  <%= link_to "編集する", edit_user_path, class: "btn btn-sm btn-custom-color col-md-1" %>
+</div>
 
   <div class="row">
     <div class="col-md-7">
 
       <table class="table", border="1">
         <tr>
-          <th class="bg-light col-md-2">法人形式</th><td class="col-md-5"><%= @user.company_from %></td>
+          <th class="bg-light col-md-2">法人形式</th><td class="col-md-5" style="color: white;"><%= @user.company_from %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">法人名</th><td class="col-md-5"><%= @user.name %></td>
+          <th class="bg-light col-md-2">法人名</th><td class="col-md-5" style="color: white;"><%= @user.name %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">フリガナ</th><td class="col-md-5"><%= @user.name_kana %></td>
+          <th class="bg-light col-md-2">フリガナ</th><td class="col-md-5" style="color: white;"><%= @user.name_kana %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">法人番号</th><td class="col-md-5"><%= @user.company_number %></td>
+          <th class="bg-light col-md-2">法人番号</th><td class="col-md-5" style="color: white;"><%= @user.company_number %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">郵便番号</th><td class="col-md-5"><%= @user.post_code %></td>
+          <th class="bg-light col-md-2">郵便番号</th><td class="col-md-5" style="color: white;"><%= @user.post_code %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">住所</th><td class="col-md-5"><%= @user.address %></td>
+          <th class="bg-light col-md-2">住所</th><td class="col-md-5" style="color: white;"><%= @user.address %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">電話番号</th><td class="col-md-5"><%= @user.phonenumber %></td>
+          <th class="bg-light col-md-2">電話番号</th><td class="col-md-5" style="color: white;"><%= @user.phonenumber %></td>
         </tr>
         <tr>
-          <th class="bg-light col-md-2">メールアドレス</th><td class="col-md-5"><%= @user.email %></td>
+          <th class="bg-light col-md-2">メールアドレス</th><td class="col-md-5" style="color: white;"><%= @user.email %></td>
         </tr>
       </table>
     </div>
