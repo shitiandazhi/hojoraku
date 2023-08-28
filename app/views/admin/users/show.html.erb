@@ -8,12 +8,30 @@
             <th class="text-left text-white">会員ID</th>
             <td class="text-white"><%= @user.id %></td>
           </tr>
-
+           <tr>
+            <th class="text-left text-white">法人形態</th>
+            <td class="text-white"><%= @user.company_from %></td>
+          </tr>
           <tr>
             <th class="text-left text-white">法人名</th>
             <td class="text-white"><%= @user.name %></td>
           </tr>
-
+             <tr>
+            <th class="text-left text-white">フリガナ</th>
+            <td class="text-white"><%= @user.name_kana %></td>
+          </tr>
+           <tr>
+            <th class="text-left text-white">法人番号</th>
+            <td class="text-white"><%= @user.company_number %></td>
+          </tr>
+           <tr>
+            <th class="text-left text-white">郵便番号</th>
+            <td class="text-white"><%= @user.post_code %></td>
+          </tr>
+           <tr>
+            <th class="text-left text-white">住所</th>
+            <td class="text-white"><%= @user.address %></td>
+          </tr>
           <tr>
             <th class="text-left text-white">メールアドレス</th>
             <td class="text-white"><%= @user.email %></td>
