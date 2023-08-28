@@ -1,64 +1,68 @@
-<div class="container" style="background-color: #f0f6fa;">
-  <div class="row justify-content-center">
-    <div class="col-12 text-center my-5">
-      <h1 style="color: #3498db;">投稿詳細</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>補助金詳細</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #e6f2f8;">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-5">
+        <h1 style="color: #3498db;">投稿詳細</h1>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-4 text-center my-3">
-      by <%= link_to @grant.user.name, admin_user_path(@grant.user.id), class: "text-decoration-none text-dark" %>
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center my-3">
+        <p>投稿者：<%= link_to @grant.user.name, admin_user_path(@grant.user.id), class: "text-decoration-none text-blue" %></p>
+      </div>
+      <div class="col-md-4 text-center my-3">
+        <h4 style="color: #3498db;">タグ</h4>
+        <p><% if @tag %><%= @tag.name %><% else %>タグなし<% end %></p>
+      </div>
     </div>
-    <div class="col-md-4 text-center my-3">
-      <%= @grant.favorites.count %> 保存
+    <div class="row justify-content-center">
+      <div class="col-12 text-center my-3">
+        <h4 style="color: #3498db;">補助金名</h4>
+        <p><%= @grant.name %></p>
+      </div>
     </div>
-    <div class="col-md-4 text-center my-3">
-      <h4 style="color: #3498db;">タグ</h4>
-      <% if @tag %>
-        <div><%= @tag.name %></div>
-      <% else %>
-        <div>タグなし</div>
-      <% end %>
+    <div class="row justify-content-center">
+      <div class="col-12 text-center my-3">
+        <h4 style="color: #3498db;">申請経緯</h4>
+        <p><%= @grant.background %></p>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 text-center my-3">
-      <h4 style="color: #3498db;">補助金名</h4>
-      <div><%= @grant.name %></div>
+    <div class="row justify-content-center">
+      <div class="col-12 text-center my-3">
+        <h4 style="color: #3498db;">申請内容</h4>
+        <p><%= @grant.body %></p>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 text-center my-3">
-      <h4 style="color: #3498db;">申請経緯</h4>
-      <div><%= @grant.background %></div>
+    <div class="row justify-content-center">
+      <div class="col-12 text-right my-3">
+        <p style="color: #3498db;">コメント件数：<%= @grant.grant_comments.count %></p>
+        <p style="color: #3498db;">いいね数：<%= @grant.favorites.count %> </p>
+      </div>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 text-center my-3">
-      <h4 style="color: #3498db;">申請内容</h4>
-      <div><%= @grant.body %></div>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 text-right my-3">
-      <p style="color: #3498db;">コメント件数：<%= @grant.grant_comments.count %></p>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 overflow-auto" style="max-width: 600px; margin: 0 auto;">
-      <% @grant.grant_comments.each do |grant_comment| %>
-        <div class="row my-2">
-          <div class="col-md-4 text-center">
-            <p><%= grant_comment.user.name %></p>
+    <div class="row justify-content-center">
+      <div class="col-12 overflow-auto" style="max-width: 600px; margin: 0 auto;">
+        <% @grant.grant_comments.each do |grant_comment| %>
+          <div class="row my-2 border-bottom">
+            <div class="col-md-4 text-center">
+              <p><%= grant_comment.user.name %></p>
+            </div>
+            <div class="col-md-4 d-flex align-items-center text-break">
+              <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
+              <p><%= grant_comment.comment %></p>
+            </div>
+            <div class="col-md-4 text-center d-flex align-items-center">
+              <%= link_to "削除", admin_grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" }, class: 'btn btn-md btn-danger text-white' %>
+            </div>
           </div>
-          <div class="col-md-4 d-flex align-items-center text-break">
-            <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
-            <p><%= grant_comment.comment %></p>
-          </div>
-          <div class="col-md-4 text-center d-flex align-items-center">
-            <%= link_to "削除", admin_grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" }, class: 'btn btn-md btn-danger text-white' %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</body>
+</html>

@@ -137,12 +137,12 @@
     </nav>
   </header>
 
-  <main>
-    <%= yield %>
-  </main>
+  <main style="border-bottom: 1px solid #ccc;">
+  <%= yield %>
+</main>
 
-  <footer style="background-color: #f0f6fa;">
-   <div class="text-center py-5">
+<footer style="background-color: #f0f6fa; border-top: 1px solid #ccc;">
+  <div class="text-center py-2">
     <h4 class="logo"><%= link_to 'hojoraku', root_path, class: "text-black text-decoration-none" %></h4>
   </div>
 </footer>

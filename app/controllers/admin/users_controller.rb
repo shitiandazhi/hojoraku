@@ -2,7 +2,6 @@ class Admin::UsersController < ApplicationController
 
    def show
   @user = User.find(params[:id])
-  @grants = @user.grants.page(params[:page]).reverse_order
   @today_grant = @grants.created_today
   @yesterday_grant = @grants.created_yesterday
   @this_week_grant = @grants.created_this_week

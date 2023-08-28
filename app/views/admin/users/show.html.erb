@@ -1,91 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto">
-      <h3 class="my-5 text-center"><%= @user.name %>さんの会員詳細</h3>
+      <h3 class="my-5 text-center text-white"><%= @user.name %>さんの会員詳細</h3>
       <%= form_with model: @user, url: admin_user_path do |f| %>
         <table class="table">
           <tr>
-            <th class="text-left">会員ID</th>
-            <td><%= @user.id %></td>
+            <th class="text-left text-white">会員ID</th>
+            <td class="text-white"><%= @user.id %></td>
           </tr>
 
           <tr>
-            <th class="text-left">法人名</th>
-            <td><%= @user.name %></td>
+            <th class="text-left text-white">法人名</th>
+            <td class="text-white"><%= @user.name %></td>
           </tr>
 
           <tr>
-            <th class="text-left">メールアドレス</th>
-            <td><%= @user.email %></td>
+            <th class="text-left text-white">メールアドレス</th>
+            <td class="text-white"><%= @user.email %></td>
           </tr>
 
           <tr>
-           <th class="text-left">会員ステータス</th>
+           <th class="text-left text-white">会員ステータス</th>
               <% if @user.is_deleted == true %>
             <td class="text-danger">退会済み</td>
               <% else %>
             <td class="text-success">有効</td>
               <% end %>
           </tr>
-
         </table>
-          <div class="form-group">
-            <%= f.label :"会員ステータス", class:"col-4" %>
-            <%= f.radio_button :is_deleted, false %>
-            <%= f.label :is_deleted, "有効" %>
-            <%= f.radio_button :is_deleted, true %>
-            <%= f.label :is_deleted, "退会" %>
-          </div>
+        <div class="form-group">
+          <%= f.label :"会員ステータス", class:"col-4 text-white" %>
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted, "有効", class: "text-white" %>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted, "退会", class: "text-white" %>
+        </div>
         <div class="form-group col-11 d-flex justify-content-around">
           <%= f.submit '変更を保存', class: "btn btn-success" %>
         </div>
       <% end %>
-
-      <h4>投稿数の前日比・前週比</h4>
-  <div class="table_width">
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th>今日の投稿</th>
-        <th>昨日の投稿</th>
-        <th>前日比</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr>
-	  <td><%= @today_grant.count %></td>
-	  <td><%= @yesterday_grant.count %></td>
-        <% if @yesterday_grant.count == 0 %>
-	  <td>前日の投稿はなし</td>
-        <% else %>
-	  <td><% @the_day_before =   @today_grant.count / @yesterday_grant.count  %>
-	  <%= (@the_day_before * 100).round %>%</td>
-        <% end %>
-        </tr>
-      </tbody>
-    </table>
-
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th>今週の投稿</th>
-        <th>先週の投稿</th>
-        <th>先週比</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr>
-	  <td><%= @this_week_grant.count %></td>
-	  <td><%= @last_week_grant.count %></td>
-        <% if @last_week_grant.count == 0 %>
-	  <td>先週の投稿はなし</td>
-        <% else %>
-	  <td><% @the_week_before = @this_week_grant.count / @last_week_grant.count  %>
-	  <%= (@the_week_before * 100).round %>%</td>
-        <% end %>
-        </tr>
-      </tbody>
-    </table>
     </div>
   </div>
 </div>
