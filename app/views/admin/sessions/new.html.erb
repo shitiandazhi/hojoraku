@@ -26,9 +26,23 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary my-3" %>
+    <%= f.submit "ログイン", class: "btn btn-primary my-3  btn-custom-color" %>
   </div>
 <% end %>
 
 <%= render "admin/shared/links" %>
+
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+</style>
 
