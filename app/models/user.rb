@@ -7,8 +7,17 @@ class User < ApplicationRecord
   has_many :grants, dependent: :destroy
   has_many :grant_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
   has_one_attached :profile_image
+
+  validates :company_from, presence: true
+  validates :name, presence: true
+  validates :name_kana, presence: true
+  validates :email, presence: true
+  validates :post_code, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :address, presence: true
+  validates :phonenumber, presence: true
+
+
 
   def active_for_authentication?
     super && (is_deleted == false)
