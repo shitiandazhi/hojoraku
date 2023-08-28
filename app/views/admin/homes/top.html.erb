@@ -37,56 +37,6 @@
 
       <%= paginate @users %>
 
-      <h4 style="color: white;">投稿数の前日比・前週比</h4>
-      <div class="table_width">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th style="color: white;">今日の投稿</th>
-              <th style="color: white;">昨日の投稿</th>
-              <th style="color: white;">前日比</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="color: white;"><%= @today_grant.count %></td>
-              <td style="color: white;"><%= @yesterday_grant.count %></td>
-              <% if @yesterday_grant.count == 0 %>
-                <td style="color: white;">前日の投稿はなし</td>
-              <% else %>
-                <td style="color: white;">
-                  <% @the_day_before = @today_grant.count.to_f / @yesterday_grant.count %>
-                  <%= (@the_day_before * 100).round %>%
-                </td>
-              <% end %>
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th style="color: white;">今週の投稿</th>
-              <th style="color: white;">先週の投稿</th>
-              <th style="color: white;">先週比</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="color: white;"><%= @this_week_grant.count %></td>
-              <td style="color: white;"><%= @last_week_grant.count %></td>
-              <% if @last_week_grant.count == 0 %>
-                <td style="color: white;">先週の投稿はなし</td>
-              <% else %>
-                <td style="color: white;">
-                  <% @the_week_before = @this_week_grant.count.to_f / @last_week_grant.count %>
-                  <%= (@the_week_before * 100).round %>%
-                </td>
-              <% end %>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>

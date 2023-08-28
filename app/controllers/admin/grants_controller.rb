@@ -1,15 +1,22 @@
 class Admin::GrantsController < ApplicationController
   def index
-    @grant_comment = GrantComment.page(params[:page])
     @tags = Tag.all
-    if params[:tag_id].present?
-      # Tagモデルのidを使用するのが適切です。また、LIKE演算子のパターンが間違っていましたので修正しました。
-      @grants = Grant.joins(:tags).where(tags: { id: params[:tag_id] })
-    elsif params[:word].present?
-      @grants = Grant.where('name LIKE ?', "%#{params[:word]}%")
-    else
-      @grants = Grant.all
-    end
+    @grants = if params[:tag_id].present?
+                Grant.joins(:tags).where(tags: { id: params[:tag_id] })
+              elsif params[:word].present?
+                Grant.where('name LIKE ?', "%#{params[:word]}%")
+              else
+                Grant.all
+              end
+
+    @today_grant = @grants.created_today
+    @yesterday_grant = @grants.created_yesterday
+    @this_week_grant = @grants.created_this_week
+    @last_week_grant = @grants.created_last_week
+
+    @grant_comment = GrantComment.page(params[:page])
+    @paginated_grants = @grants.page(params[:page])
+
   end
 
   def show
