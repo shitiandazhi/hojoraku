@@ -38,7 +38,20 @@
 
   <div class="row justify-content-center mt-5 pb-5">
     <div class="form-inline mx-auto">
-      <%= f.submit '更新', class: 'mr-5 btn btn-lg btn-warning text-white' %>
+      <%= f.submit '更新', class: 'mr-5 btn btn-lg btn-custom-color text-white' %>
     </div>
   </div>
 <% end %>
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+</style>
