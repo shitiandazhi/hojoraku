@@ -9,6 +9,7 @@
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
  <style>
+
     body {
       background-color: #223344;
       font-family: Arial, sans-serif;
@@ -71,6 +72,18 @@
      background-color: rgba(255, 255, 255, 0.1);
     }
 
+    @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column; /* メニューアイテムを縦並びに */
+    }
+    .navbar-nav li {
+      margin: 0.5rem 0; /* 上下の余白を追加 */
+      text-align: center; /* メニューアイテムを中央揃えに */
+    }
+    .navbar-nav li a {
+      padding: 0.5rem 1rem; /* パディングを調整 */
+    }
+  }
     footer {
       background-color: #2980b9;
       color: #ecf0f1;
@@ -98,58 +111,58 @@
 
       </div>
 
-        <ul class="navbar-nav ml-auto">
-      <!-- 管理者がログインしている場合-->
-        <% if admin_signed_in? %>
-          <li>
-            <%= link_to "会員一覧", admin_root_path, class: "text-light mx-5" %>
-          </li>
+        <ul class="navbar-nav ml-auto list-inline">
+  <!-- 管理者がログインしている場合-->
+  <% if admin_signed_in? %>
+    <li class="d-inline-block">
+      <%= link_to "会員一覧", admin_root_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "投稿一覧", admin_grants_path, class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "投稿一覧", admin_grants_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "タグ一覧", admin_tags_path, class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "タグ一覧", admin_tags_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-light mx-2" %>
+    </li>
 
-      <!--ユーザー（会員）がログインしている場合 -->
-        <% elsif user_signed_in? %>
-          <li>
-            <%= link_to "投稿一覧", grants_path, class: "text-light mx-5" %>
-          </li>
+  <!-- ユーザー（会員）がログインしている場合 -->
+  <% elsif user_signed_in? %>
+    <li class="d-inline-block">
+      <%= link_to "投稿一覧", grants_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "マイページ", user_path(current_user), class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "マイページ", user_path(current_user), class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light mx-2" %>
+    </li>
 
-      <!-- ログインしていない場合 -->
-        <% else %>
-          <li>
-            <%= link_to "投稿一覧", grants_path, class: "text-light mx-5" %>
-          </li>
+  <!-- ログインしていない場合 -->
+  <% else %>
+    <li class="d-inline-block">
+      <%= link_to "投稿一覧", grants_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "新規登録", new_user_registration_path, class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "新規登録", new_user_registration_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "ログイン(利用者)", new_user_session_path ,class: "text-light mx-5" %>
-          </li>
+    <li class="d-inline-block">
+      <%= link_to "ログイン(利用者)", new_user_session_path, class: "text-light mx-2" %>
+    </li>
 
-          <li>
-            <%= link_to "ログイン(管理者)", new_admin_session_path, class: "text-light mx-5" %>
-          </li>
-        <% end %>
-      </ul>
+    <li class="d-inline-block">
+      <%= link_to "ログイン(管理者)", new_admin_session_path, class: "text-light mx-2" %>
+    </li>
+  <% end %>
+</ul>
     </nav>
   </header>
 

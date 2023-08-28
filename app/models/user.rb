@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :grants, dependent: :destroy
   has_many :grant_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+ 
   has_one_attached :profile_image
 
   def active_for_authentication?
