@@ -2,7 +2,7 @@
 <%= form_with model: @tag,url: admin_tags_path do |f| %>
   <%= f.label "タグ名" %>
   <%= f.text_field :name %>
-  <%= f.submit "新規登録", class:"btn btn-success" %>
+  <%= f.submit "新規登録", class:"btn btn-custom-color" %>
 <% end %>
 
 <table class='table mt-5 w-50' style="color: white;">
@@ -15,7 +15,20 @@
  <% @tags.each do |tag| %>
     <tbody>
       <th><%= tag.name %></th>
-      <th><%= link_to "編集する", edit_admin_tag_path(tag), class:"btn btn-success py-0" %></th>
+      <th><%= link_to "編集する", edit_admin_tag_path(tag), class:"btn btn-custom-color py-0" %></th>
     </tbody>
   <% end %>
 </table>
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+</style>
