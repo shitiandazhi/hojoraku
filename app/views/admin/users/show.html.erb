@@ -54,9 +54,22 @@
           <%= f.label :is_deleted, "退会", class: "text-white" %>
         </div>
         <div class="form-group col-11 d-flex justify-content-around">
-          <%= f.submit '変更を保存', class: "btn btn-success" %>
+          <%= f.submit '変更を保存', class: "btn btn-custom-color" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+</style>
