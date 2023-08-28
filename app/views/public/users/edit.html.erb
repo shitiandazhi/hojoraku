@@ -2,32 +2,61 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <%= form_with model: @user, url: user_session_path(@user), local: true do |f| %>
+        <h4 class="mb-3">法人形式</h4>
+        <%= f.text_field :company_from, class: "form-control mb-3" %>
 
-        <h4>法人形式</h4>
-        <%= f.text_field :company_from, class: "form-control" %>
-        <h4>法人名</h4>
-        <%= f.text_field :name, class: "form-control" %>
-        <h4>フリガナ</h4>
-        <%= f.text_field :name_kana, class: "form-control" %>
-        <h4>法人番号</h4>
-        <%= f.text_field :company_number, class: "form-control" %>
-        <h4>郵便番号</h4>
-        <%= f.text_field :post_code, class: "form-control" %>
-        <h4>住所</h4>
-        <%= f.text_field :address, class: "form-control" %>
-        <h4>電話番号</h4>
-        <%= f.text_field :phonenumber, class: "form-control" %>
-        <h4>メールアドレス</h4>
-        <%= f.text_field :email, class: "form-control" %>
+        <h4 class="mb-3">法人名</h4>
+        <%= f.text_field :name, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">フリガナ</h4>
+        <%= f.text_field :name_kana, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">法人番号</h4>
+        <%= f.text_field :company_number, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">郵便番号</h4>
+        <%= f.text_field :post_code, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">住所</h4>
+        <%= f.text_field :address, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">電話番号</h4>
+        <%= f.text_field :phonenumber, class: "form-control mb-3" %>
+
+        <h4 class="mb-3">メールアドレス</h4>
+        <%= f.text_field :email, class: "form-control mb-3" %>
 
         <div class="row mt-4 pb-5">
           <div class="form-inline mx-auto">
-            <%= f.submit '変更を保存', class:"btn btn-success ml-5" %>
-            <%= link_to "退会する", users_check_users_path,class:"btn btn-danger ml-3" %>
+            <%= f.submit '変更を保存', class: "btn btn-custom-color ml-3 mr-3" %>
+            <%= link_to "退会する", users_check_users_path, class: "btn btn-danger" %>
           </div>
         </div>
-
       <% end %>
     </div>
   </div>
 </div>
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+
+  .btn-danger {
+    background-color: #dc3545; /* 赤色 */
+    border: 2px solid #dc3545; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+　.btn-danger:hover {
+    background-color: #c82333; /* ホバー時の色 */
+    border-color: #c82333; /* ホバー時の枠線色 */
+  }
+</style>

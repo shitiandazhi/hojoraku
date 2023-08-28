@@ -7,6 +7,10 @@ has_many :grant_comments, dependent: :destroy
 has_many :grant_tags, dependent: :destroy
 has_one_attached :image
 
+validates :name, presence: true
+validates :background, presence: true
+validates :body, presence: true
+
 def favorited_by?(user)
   user.present? && favorites.exists?(user_id: user.id)
 end

@@ -10,8 +10,10 @@ before_action :authenticate_user!
   end
 
   def destroy
-    Grant.find(params[:id]).destroy
-    redirect_to grant_path(params[:grant_id])
+    grant_comment = GrantComment.find(params[:id])
+    grant = grant_comment.grant # GrantComment に紐づく Grant を取得
+    grant_comment.destroy
+     redirect_to grant_path(grant) # 紐づく Grant のパスへリダイレクト
   end
 
   private
