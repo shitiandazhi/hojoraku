@@ -15,7 +15,7 @@
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
-          <td><span class="text-white"><%= grant.name %></span></td>
+          <td><span class="text-white"><%= link_to grant.name, grant %></span></td>
           <td><span class="text-white"><%= grant.background %></span></td>
           <td><span class="text-white"><%= grant.body %></span></td>
         </tr>
