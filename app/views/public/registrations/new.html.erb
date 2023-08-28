@@ -65,11 +65,22 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       </div>
     </div>
+    <style>
+.custom-button {
+  border: 1px solid #28a745; /* 枠線の色 */
+  background-color: #28a745; /* 背景色 */
+  color: #ffffff; /* テキストの色 */
+}
+
+.custom-button:hover {
+  background-color: #218838; /* ホバー時の背景色 */
+}
+</style>
    <div class="row justify-content-start">
-      <div class="col-4 m-auto">
-        <button type="submit" class="btn btn-success btn-sm">新規登録</button>
-      </div>
-    </div>
+  <div class="col-4 m-auto">
+    <button type="submit" class="btn btn-success btn-sm custom-button">新規登録</button>
+  </div>
+</div>
   <% end %>
 
   <div class="row justify-content my-4">

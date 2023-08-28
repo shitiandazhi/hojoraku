@@ -1,10 +1,39 @@
 <% if user_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.select :range, options_for_select([['User'], ['Grant']]) %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
+  <div class="search-form">
+    <%= form_with url: search_path, local: true, method: :get, class: "search-form" do |f| %>
+      <%= f.text_field :word, class: "form-control", placeholder: "検索キーワード" %>
+      <%= f.select :range, options_for_select([['User'], ['Grant']], {prompt: '検索対象'}) %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]], {prompt: '検索方法'}) %>
+      <%= f.submit "検索", class: "btn btn-primary custom-link" %>
     <% end %>
   </div>
 <% end %>
+
+<style>
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-form .form-control {
+    border: 1px solid #007bff; /* 青色のボーダー */
+    background-color: #ffffff; /* 白色の背景色 */
+    color: #000000; /* 黒色の文字色 */
+    margin-right: 10px;
+    border-radius: 4px;
+    width: auto;
+  }
+
+  .custom-link {
+    background-color: #007bff; /* 青色の背景色 */
+    color: #ffffff; /* 白色の文字色 */
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .custom-link:hover {
+    background-color: #0056b3; /* ホバー時の背景色 */
+  }
+</style>

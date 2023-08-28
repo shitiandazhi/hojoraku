@@ -3,10 +3,15 @@
     <%= notice %><%= alert %>
   </div>
   <h1 class="py-5">List of Submissions</h1>
+  <style>
+    .custom-link:hover {
+      background-color: #0056b3; /* ホバー時の背景色 */
+    }
+  </style>
   <div class="row justify-content-center">
     <% if user_signed_in? %>
       <div class="col-lg-3">
-        <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white' %>
+        <%= link_to "投稿", new_grant_path, class: 'btn btn-md btn-success text-white custom-link' %>
       </div>
     <% end %>
   </div>

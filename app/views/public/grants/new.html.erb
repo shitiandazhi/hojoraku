@@ -26,7 +26,21 @@
       <%= f.collection_select :tag_id, Tag.all, :id, :name, { prompt: 'タグを選択してください' }, class: 'form-control' %>
     </div>
     <div class="form-section">
-      <%= f.submit '投稿する', :name => 'post', class: 'btn btn-warning text-white' %>
+      <style>
+        .custom-link {
+          border: 1px solid #28a745; /* 枠線の色 */
+          background-color: #28a745; /* 背景色 */
+          padding: 8px 12px;
+          border-radius: 4px;
+          color: white;
+          text-decoration: none;
+        }
+
+        .custom-link:hover {
+          background-color: #218838; /* ホバー時の背景色 */
+        }
+      </style>
+      <%= f.submit '投稿する', :name => 'post', class: 'btn custom-link' %>
     </div>
   <% end %>
 </div>
