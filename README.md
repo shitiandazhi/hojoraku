@@ -23,7 +23,7 @@
 - 自社が補助金を申請して採択又は不採択となった結果を投稿する時
 
 #### 設計書
-![image](https://github.com/shitiandazhi/hojoraku2/assets/135299404/cef10155-67ea-43ae-88f8-6b1ef1e1e0f1)
+![image](https://github.com/shitiandazhi/hojoraku2/assets/135299404/ad138b41-664c-4c85-99d8-daabce2fc103)
 
 #### 開発環境
 - OS：Linux(CentOS)
