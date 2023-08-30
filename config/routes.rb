@@ -23,7 +23,7 @@ namespace :admin do
     resources :grants do
     resources :grant_comments, only: [:destroy]
    end
-    resources :tags
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
    end
 
  scope module: :public do
