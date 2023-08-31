@@ -1,5 +1,5 @@
 class Admin::TagsController < ApplicationController
-
+before_action :load_tags, only: [:index, :create, :update]
    def index
     @tags = Tag.all
     @tag = Tag.new
@@ -12,8 +12,8 @@ class Admin::TagsController < ApplicationController
        @tags = Tag.all
        render :index
     else
-      @tags = Tag.all
-       redirect_back(fallback_location: root_path)
+     　@tags = Tag.all
+        redirect_to admin_tags_path, alert: 'Tag creation failed'
     end
   end
 
@@ -32,8 +32,12 @@ class Admin::TagsController < ApplicationController
   end
 
   private
+
   def tag_params
     params.require(:tag).permit(:name)
   end
 
+  def load_tags
+    @tags = Tag.all
+  end
 end
