@@ -24,6 +24,7 @@ class User < ApplicationRecord
   end
 
   GUEST_USER_EMAIL = "guest@guest"
+  GUEST_USER_NAME = "guest"
 
   def self.guest
      def self.guest
@@ -37,7 +38,7 @@ class User < ApplicationRecord
       user.phonenumber = "1234567890"  # 電話番号を設定
      end
      end
-    end
+  end
 
   def guest_user?
     email == GUEST_USER_EMAIL
