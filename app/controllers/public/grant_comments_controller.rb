@@ -5,6 +5,7 @@ before_action :authenticate_user!
     grant = Grant.find(params[:grant_id])
     comment = current_user.grant_comments.new(grant_comment_params)
     comment.grant_id = grant.id
+    comment.score = Language.get_data(grant_comment_params[:comment])
     comment.save
     redirect_to grant_path(grant)
   end

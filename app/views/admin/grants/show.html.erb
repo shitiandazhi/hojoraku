@@ -46,16 +46,17 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-12 overflow-auto" style="max-width: 600px; margin: 0 auto;">
+      <div class="col-12 overflow-auto" style="max-width: 1200px; margin: 0 auto;">
         <% @grant.grant_comments.each do |grant_comment| %>
           <div class="row my-2 border-bottom">
             <div class="col-md-4 text-center">
               <p><%= grant_comment.user.name %></p>
             </div>
-            <div class="col-md-4 d-flex align-items-center text-break">
-              <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
-              <p><%= grant_comment.comment %></p>
-            </div>
+            <div class="col-md-4 align-items-center text-break">
+             <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
+             <p class="sentiment-score">本文の感情分析スコア[<%= grant_comment.score %>]</p>
+             <p><%= grant_comment.comment %></p>
+           </div>
             <div class="col-md-4 text-center d-flex align-items-center">
               <%= link_to "削除", admin_grant_grant_comment_path(grant_comment.grant, grant_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" }, class: 'btn btn-md btn-danger text-white' %>
             </div>
