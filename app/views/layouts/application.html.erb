@@ -10,93 +10,96 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
  <style>
 
-    body {
-      background-color: #223344;
-      font-family: Arial, sans-serif;
-      color: #ffffff;
-    }
-    header {
-      background-color: #2980b9;
-      padding: 10px;
-      color: #ecf0f1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .search-form {
-      display: flex;
-      align-items: center;
-    }
-    .form-control {
-      background-color: #d1d8e0;
-      color: #34495e;
-      border: none;
-      padding: 8px;
-      margin-right: 10px;
-      border-radius: 4px;
-    }
-    .btn {
-      background-color: #3498db;
-      color: #ecf0f1;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #2980b9;
-    }
-    .navbar-nav {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-item {
-      margin: 0 10px;
-    }
-    .navbar-nav li {
-     border: none; /* ボーダーを削除 */
-     margin: 0 0.25rem; /* 左右の余白を追加 */
+   body {
+  background-color: #223344;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
 
-    }
-    .navbar-nav li a {
-     color: #ffffff;
-     text-decoration: none;
-     padding: 0.5rem;
-     border-radius: 4px;
-     transition: background-color 0.3s ease;
-    }
-   .navbar-nav li a:hover {
-     background-color: rgba(255, 255, 255, 0.1);
-    }
+header {
+  background-color: #2980b9;
+  padding: 10px;
+  color: #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    @media (max-width: 768px) {
-    .navbar-nav {
-      flex-direction: column; /* メニューアイテムを縦並びに */
-    }
-    .navbar-nav li {
-      margin: 0.5rem 0; /* 上下の余白を追加 */
-      text-align: center; /* メニューアイテムを中央揃えに */
-    }
-    .navbar-nav li a {
-      padding: 0.5rem 1rem; /* パディングを調整 */
-    }
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  background-color: #d1d8e0;
+  color: #34495e;
+  border: none;
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #3498db;
+  color: #ecf0f1;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav li {
+  border: none;
+  margin: 0 0.25rem;
+}
+
+.navbar-nav li a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
   }
-    footer {
-      background-color: #2980b9;
-      color: #ecf0f1;
-      text-align: center;
-      padding: 20px;
-    }
+  .navbar-nav li {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+  .navbar-nav li a {
+    padding: 0.5rem 1rem;
+  }
+}
 
-    body, header, .btn, .navbar-nav li a, footer {
-      background-color: #223344;
-    }
-    .btn, .navbar-nav li a, footer {
-      color: #ffffff;
-    }
+footer {
+  background-color: #2980b9;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px;
+}
  </style>
 </head>
 <body>
