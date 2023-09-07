@@ -11,11 +11,13 @@
       <th colspan="2"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
-        <td><%= link_to "編集する", edit_admin_tag_path(tag), class: "btn btn-custom-color py-0" %></td>
+        <td><%= link_to "編集する", edit_admin_tag_path(tag), class: "btn btn-custom-color py-0 " %></td>
+        <td><%= link_to "削除", admin_tag_path(tag), method: :delete, class: "btn btn-custom-color py-0", "data-confirm" => "本当に削除しますか？" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -16,7 +16,6 @@ class Admin::GrantsController < ApplicationController
 
     @grant_comment = GrantComment.page(params[:page])
     @paginated_grants = @grants.page(params[:page])
-
   end
 
   def show
@@ -29,6 +28,5 @@ class Admin::GrantsController < ApplicationController
     @grant = Grant.find(params[:id])
     @grant.destroy
     redirect_to admin_grants_path, notice: "削除しました。"
+   end
   end
-
-end

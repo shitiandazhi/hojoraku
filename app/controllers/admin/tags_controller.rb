@@ -3,7 +3,6 @@ before_action :load_tags, only: [:index, :create, :update]
    def index
     @tags = Tag.all
     @tag = Tag.new
-
    end
 
   def create
@@ -28,7 +27,12 @@ before_action :load_tags, only: [:index, :create, :update]
     else
       redirect_back(fallback_location: root_path)
     end
+  end
 
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to admin_tags_path, notice: "削除しました。"
   end
 
   private

@@ -1,5 +1,5 @@
 class Public::GrantsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show, :edit, :update, :destroy]
 
   def index
     @grants = Grant.page(params[:page])
