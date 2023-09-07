@@ -1,25 +1,19 @@
 class Public::UsersController < ApplicationController
- before_action :is_matching_login_user, only: [:show, :edit, :update, :withdraw]
   def show
-    is_matching_login_user
     @user = User.find(params[:id])
-
   end
 
   def edit
-    is_matching_login_user
     @user = current_user
   end
 
   def update
-    is_matching_login_user
     user = current_user
     user.update(user_params)
     redirect_to user_path
   end
 
   def withdraw
-    is_matching_login_user
     @user = User.find(current_user.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
