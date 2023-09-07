@@ -24,4 +24,11 @@ class Admin::GrantsController < ApplicationController
     @grant_comment = GrantComment.all
     @tag = @grant.tag if @grant.tag.present?
   end
+
+   def destroy
+    @grant = Grant.find(params[:id])
+    @grant.destroy
+    redirect_to admin_grants_path, notice: "削除しました。"
+  end
+
 end
