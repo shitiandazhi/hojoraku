@@ -21,6 +21,7 @@ header {
   padding: 10px;
   color: #ecf0f1;
   display: flex;
+  border-bottom: 1px solid #ccc;
   justify-content: space-between;
   align-items: center;
 }
@@ -98,13 +99,13 @@ footer {
   background-color: #2980b9;
   color: #ecf0f1;
   text-align: center;
+  border-top: 1px solid #ccc;
   padding: 20px;
 }
  </style>
 </head>
 <body>
   <header>
-    border-bottom: 1px solid #ccc;
     <div>
       <h2><%= link_to 'hojoraku', root_path, class: "text-light text-decoration-none" %></h2>
     </div>
@@ -170,7 +171,6 @@ footer {
   </header>
 
   <main style="border-bottom: 1px solid #ccc;">
-    border-top: 1px solid #ccc;
   <%= yield %>
 </main>
 
