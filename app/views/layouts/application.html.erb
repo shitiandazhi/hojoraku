@@ -104,6 +104,7 @@ footer {
 </head>
 <body>
   <header>
+    border-bottom: 1px solid #ccc;
     <div>
       <h2><%= link_to 'hojoraku', root_path, class: "text-light text-decoration-none" %></h2>
     </div>
@@ -169,6 +170,7 @@ footer {
   </header>
 
   <main style="border-bottom: 1px solid #ccc;">
+    border-top: 1px solid #ccc;
   <%= yield %>
 </main>
 
