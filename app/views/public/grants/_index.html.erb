@@ -25,9 +25,9 @@
           <td style="color: white;"><%= grant.background %></td>
           <td style="color: white;"><%= grant.body %></td>
           <td style="color: white;"><%= grant.grant_comments.count %>件</td>
-          <td id="favorite-btn_<%= grant.id %>">
-            <%= render "public/favorites/btn", grant: grant %></td>
-          <td>
+         <td id="favorite-btn_<%= grant.id %>">
+            <%= render partial: "public/favorites/btn", locals: { grant: grant } %>
+        </td>
             <div class="d-flex align-items-center">
             </div>
           </td>

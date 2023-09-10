@@ -1,4 +1,5 @@
 class Admin::GrantsController < ApplicationController
+
   def index
     @tags = Tag.all
     @grants = if params[:tag_id].present?
@@ -29,4 +30,4 @@ class Admin::GrantsController < ApplicationController
     @grant.destroy
     redirect_to admin_grants_path, notice: "削除しました。"
    end
-  end
+end

@@ -1,5 +1,6 @@
 class Public::GrantsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action :correct_grant, only: [:edit, :update]
 
   def index
     @grants = Grant.page(params[:page])
@@ -48,7 +49,7 @@ class Public::GrantsController < ApplicationController
   end
 
   def destroy
-    @grant = Grant.find(params[:id]) # 変数名修正
+    @grant = Grant.find(params[:id])
     @grant.destroy
     redirect_to grants_path, notice: "削除しました。"
   end
@@ -56,7 +57,15 @@ class Public::GrantsController < ApplicationController
 
 private
 
- def grant_params
+def correct_grant
+    @grant = Grant.find(params[:id])
+    unless @grant.user.id == current_user.id
+        redirect_to grants_path, alert: 'このページへは遷移できません。'
+    end
+end
+
+def grant_params
   params.require(:grant).permit(:name, :background, :body, :tag_id, :application_status)
- end
+end
+
 end

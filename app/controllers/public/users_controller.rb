@@ -1,4 +1,8 @@
 class Public::UsersController < ApplicationController
+
+ before_action :authenticate_user!, except: [:index]
+ before_action :ensure_guest_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
   end
@@ -15,7 +19,6 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = User.find(current_user.id)
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
