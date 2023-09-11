@@ -46,13 +46,13 @@
     </thead>
     <tbody>
       <tr>
-        <td style="color: black;"><%= @today_grant.count %></td>
-        <td style="color: black;"><%= @yesterday_grant.count %></td>
-        <% if @yesterday_grant.count == 0 %>
+        <td style="color: black;"><%= @today_grant %></td>
+        <td style="color: black;"><%= @yesterday_grant %></td>
+        <% if @yesterday_grant == 0 %>
           <td style="color: black;">前日の投稿はなし</td>
         <% else %>
           <td style="color: black;">
-            <% @the_day_before = @today_grant.count.to_f / @yesterday_grant.count %>
+            <% @the_day_before = @today_grant / @yesterday_grant %>
             <%= (@the_day_before * 100).round %>%
           </td>
         <% end %>
@@ -70,17 +70,56 @@
     </thead>
     <tbody>
       <tr>
-        <td style="color: black;"><%= @this_week_grant.count %></td>
-        <td style="color: black;"><%= @last_week_grant.count %></td>
-        <% if @last_week_grant.count == 0 %>
+        <td style="color: black;"><%= @this_week_grant %></td>
+        <td style="color: black;"><%= @last_week_grant %></td>
+        <% if @last_week_grant == 0 %>
           <td style="color: black;">先週の投稿はなし</td>
         <% else %>
           <td style="color: black;">
-            <% @the_week_before = @this_week_grant.count.to_f / @last_week_grant.count %>
-            <%= (@the_week_before * 100).round %>%
+           <% @the_week_before = @this_week_grant / @last_week_grant %>
+              <%= number_with_precision(@the_week_before * 100, precision: 2) %>%
           </td>
         <% end %>
       </tr>
     </tbody>
-  </table>
+    </table>
+    <title>週ごとの投稿数</title>
+  <!-- Chart.jsをCDNから読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <canvas id="weekly-post-chart" width="400" height="200"></canvas>
+
+  <script>
+    // グラフデータ
+    var data = {
+       labels: ["先々週", "先週", "今週", /* 週ごとのラベルを追加 */],
+      datasets: [{
+        label: "週ごとの投稿数",
+        data: [<%@two_weeks_ago_grant%>, <%= @last_week_grant %>, <%= @this_week_grant %>, /* 週ごとのデータを追加 */],
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1
+      }]
+    };
+
+    // グラフ設定
+    var options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    };
+
+    // グラフを描画
+    var ctx = document.getElementById('weekly-post-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'bar', // 折れ線グラフにする場合は 'line' に変更
+      data: data,
+      options: options
+    });
+  </script>
+</body>
+</html>
  </div>

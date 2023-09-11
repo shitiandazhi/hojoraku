@@ -10,10 +10,11 @@ class Admin::GrantsController < ApplicationController
                 Grant.all
               end
 
-    @today_grant = @grants.created_today
-    @yesterday_grant = @grants.created_yesterday
-    @this_week_grant = @grants.created_this_week
-    @last_week_grant = @grants.created_last_week
+   @today_grant = @grants.where("created_at >= ?", Date.today.beginning_of_day).count
+   @yesterday_grant = @grants.where("created_at >= ? AND created_at < ?", Date.yesterday.beginning_of_day, Date.today.beginning_of_day).count
+   @this_week_grant = @grants.where("created_at >= ?", Date.today.beginning_of_week).count
+   @last_week_grant = @grants.where("created_at >= ? AND created_at < ?", Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week).count
+   @two_weeks_ago_grant = @grants.where("created_at >= ? AND created_at < ?", Date.today.beginning_of_week - 14.days, Date.today.beginning_of_week - 7.days).count
 
     @grant_comment = GrantComment.page(params[:page])
     @paginated_grants = @grants.page(params[:page])

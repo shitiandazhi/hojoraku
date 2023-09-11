@@ -13,9 +13,6 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-md-4 text-center my-3">
-        <p>投稿者：<%= link_to @grant.user.name, admin_user_path(@grant.user.id), class: "text-decoration-none text-blue" %></p>
-      </div>
-      <div class="col-md-4 text-center my-3">
         <h4 style="color: #3498db;">タグ</h4>
         <p><% if @tag %><%= @tag.name %><% else %>タグなし<% end %></p>
       </div>
@@ -43,6 +40,7 @@
         <p style="color: #3498db;">コメント件数：<%= @grant.grant_comments.count %></p>
         <p style="color: #3498db;">いいね数：<%= @grant.favorites.count %> </p>
         <p>投稿者：<%= link_to @grant.user.name, admin_user_path(@grant.user.id), class: "text-decoration-none text-blue" %></p>
+        <%= link_to "削除", admin_grant_path(@grant), method: :delete, class: 'btn btn-outline-danger', "data-confirm" => "本当に削除しますか？" %>
       </div>
       </div>
     </div>
