@@ -14,7 +14,7 @@ before_action :authenticate_user!
     grant_comment = GrantComment.find(params[:id])
     grant = grant_comment.grant # GrantComment に紐づく Grant を取得
     grant_comment.destroy
-     redirect_to grant_path(grant) # 紐づく Grant のパスへリダイレクト
+     redirect_to grant_path(grant) #Grant のパスへリダイレクト
   end
 
   private
