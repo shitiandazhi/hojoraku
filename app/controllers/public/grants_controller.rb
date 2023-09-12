@@ -29,8 +29,6 @@ class Public::GrantsController < ApplicationController
       puts @grant.errors.full_messages
       render :new
     end
-  else
-    render :new
   end
  end
 

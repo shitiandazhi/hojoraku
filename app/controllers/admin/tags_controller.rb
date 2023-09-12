@@ -12,7 +12,7 @@ before_action :load_tags, only: [:index, :create, :update]
        render :index
     else
        @tags = Tag.all
-        redirect_to admin_tags_path, alert: 'Tag creation failed'
+        redirect_to admin_tags_path
     end
   end
 

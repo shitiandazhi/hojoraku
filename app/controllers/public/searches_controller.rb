@@ -6,8 +6,10 @@ class Public::SearchesController < ApplicationController
 
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
-    else
+    elsif @range == "Grant"
       @grants = Grant.looks(params[:search], params[:word])
+    else
+      @tags = Tag.looks(params[:search], params[:word])
     end
   end
 end

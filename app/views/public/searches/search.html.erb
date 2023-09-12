@@ -10,8 +10,8 @@
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+  <% elsif @range == "Grant" %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがgrantの時) -->
     <tbody>
       <% @grants.each do |grant| %>
         <tr>
@@ -21,5 +21,14 @@
         </tr>
       <% end %>
     </tbody>
+  <% else %>
+  <!--検索対象モデルがGrantではない時(= 検索対象モデルがtagの時)-->
+     <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><span class="text-white"><%= tag.name %></span></td>
+        </tr>
+       <% end %>
+      </tbody>
   <% end %>
 </table>
