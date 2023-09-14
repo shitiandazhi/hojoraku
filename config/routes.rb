@@ -38,8 +38,8 @@ namespace :admin do
         end
       end
     resources :grants do
-    resource :favorites, only: [:create, :destroy]
     resources :grant_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
   end
 end

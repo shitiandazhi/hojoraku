@@ -1,2 +1,1 @@
-
-$("#favorite-btn_<%= @grant.id %>").html("<%= j(render(partial: 'public/favorites/btn', locals: { grant: @grant })) %>");
+$('#favorites_btns_<%= @grant.id %>').html("<%= j(render "public/favorites/fbtn", grant: @grant) %>");
