@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>投稿一覧</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="path/to/your/styles.css">
 </head>
 <body>
@@ -25,7 +26,7 @@
           <td style="color: white;"><%= grant.background %></td>
           <td style="color: white;"><%= grant.body %></td>
           <td style="color: white;"><%= grant.grant_comments.count %>件</td>
-          <td id="favorites_btns_<%= grant.id %>">
+          <td id="favorite_btn_<%= grant.id %>">
               <%= render 'public/favorites/btn', grant: grant %>
          </td>
         </tr>

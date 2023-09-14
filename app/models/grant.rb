@@ -11,10 +11,9 @@ class Grant < ApplicationRecord
   validates :background, presence: true
   validates :body, presence: true
 
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
-  end
-
+def favorited_by?(user)
+  user.present? && favorites.exists?(user_id: user.id)
+end
 
   # メソッド名をself.searchと変更
   def self.looks(search, word)

@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phonenumber, presence: true
 
+
   def active_for_authentication?
     super && (is_deleted == false)
   end

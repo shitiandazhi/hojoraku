@@ -1,12 +1,12 @@
 <% if grant.favorited_by?(current_user) %>
   <p>
-   <%= link_to grant_favorites_path(grant), method: :delete, remote: true do %>
+   <%= link_to grant_favorites_path(grant), method: :delete, remote: true, data: {"turbolinks" => false} do %>
     <i class="fas fa-thumbs-up"></i><%= grant.favorites.count %>
    <% end %>
   </p>
 <% else %>
   <p>
-   <%= link_to grant_favorites_path(grant), method: :post, remote: true do %>
+   <%= link_to grant_favorites_path(grant), method: :post, remote: true, data: {"turbolinks" => false} do %>
     <i class="fas fa-thumbs-up"></i><%= grant.favorites.count %>
    <% end %>
   </p>

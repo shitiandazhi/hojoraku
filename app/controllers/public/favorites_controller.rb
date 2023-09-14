@@ -1,5 +1,4 @@
 class Public::FavoritesController < ApplicationController
-    before_action :authenticate_user!
 
   def create
     @grant = Grant.find(params[:grant_id])
