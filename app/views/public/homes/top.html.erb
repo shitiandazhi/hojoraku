@@ -10,13 +10,14 @@
   <h2 style="text-align: center; text-decoration: underline; color: white;">新着投稿一覧</h2>
 
   <div class="table-responsive">
-    <table class='table table-hover table-inverse'>
+    <table class='table table-hover table-inverse' style='width: 100%;'>
       <thead>
         <tr>
           <th style="color: white;">補助金名</th>
+          <th style="color: white;">タグ</th>
           <th style="color: white;">申請経緯</th>
           <th style="color: white;">申請状況</th>
-          <th style="color: white;">コメント数</th>
+          <th style="color: white;">コメント</th>
           <th style="color: white;">いいね</th>
         </tr>
       </thead>
@@ -24,6 +25,7 @@
         <% @grants.each do |grant| %>
           <tr>
             <td><%= link_to grant.name, grant %></td>
+            <td style="color: white;"><%= grant.tag.name %></td>
             <td style="color: white;"><%= grant.background %></td>
             <td style="color: white;"><%= grant.body %></td>
             <td style="color: white;"><%= grant.grant_comments.count %>件</td>
