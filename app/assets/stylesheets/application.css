@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.red-score {
+  color: #FF0000;
+}
+
+.orange-score {
+  color: #FFA500;
+}
+
+.green-score {
+  color: #008000;
+}
+
+.blue-score {
+  color: #0000FF;
+}
