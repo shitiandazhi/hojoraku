@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>補助金詳細</title>
+  <link rel="stylesheet" type="text/css" href="/assets/application.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background-color: #e6f2f8;">
@@ -53,7 +54,8 @@
             </div>
             <div class="col-md-4 align-items-center text-break">
              <p><%= grant_comment.created_at.strftime('%Y/%m/%d') %></p>
-             <p class="sentiment-score">本文の感情分析スコア[<%= grant_comment.score %>]</p>
+            <p class="<%= score_color_class(grant_comment.score) %> sentiment-score">
+                本文の感情分析スコア[<%= grant_comment.score %>]</p>
              <p><%= grant_comment.comment %></p>
            </div>
             <div class="col-md-4 text-center d-flex align-items-center">
