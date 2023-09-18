@@ -1,23 +1,14 @@
 class Admin::GrantsController < ApplicationController
 
   def index
-    @tags = Tag.all
-    @grants = if params[:tag_id].present?
-                Grant.joins(:tags).where(tags: { id: params[:tag_id] })
-              elsif params[:word].present?
-                Grant.where('name LIKE ?', "%#{params[:word]}%")
-              else
-                Grant.all
-              end
-
+   @tags = Tag.all
+   @grants = Grant.page(params[:page])
+   @grant_comment = GrantComment.page(params[:page])
    @today_grant = @grants.where("created_at >= ?", Date.today.beginning_of_day).count
    @yesterday_grant = @grants.where("created_at >= ? AND created_at < ?", Date.yesterday.beginning_of_day, Date.today.beginning_of_day).count
    @this_week_grant = @grants.where("created_at >= ?", Date.today.beginning_of_week).count
    @last_week_grant = @grants.where("created_at >= ? AND created_at < ?", Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week).count
    @two_weeks_ago_grant = @grants.where("created_at >= ? AND created_at < ?", Date.today.beginning_of_week - 14.days, Date.today.beginning_of_week - 7.days).count
-
-    @grant_comment = GrantComment.page(params[:page])
-    @paginated_grants = @grants.page(params[:page])
   end
 
   def show

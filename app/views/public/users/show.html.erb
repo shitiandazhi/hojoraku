@@ -4,8 +4,6 @@
     <h4 class="col">マイページ</h4>
     </div>
 
-    <h5 class="col"><%= @user.name %></h5>
-
   <div class="row mb-3">
   <div class="col-md-2">
     <strong>登録情報</strong>
@@ -61,11 +59,11 @@
 
  <div class="row mt-3">
   <div class="col-md-2">
-    <%= link_to "一覧を見る", grants_path, class: "btn btn-primary btn-sm btn-custom-color" %>
+    <%= link_to "一覧へ戻る", grants_path, class: "btn btn-primary btn-sm btn-custom-color" %>
   </div>
   <% if user_signed_in? %>
     <div class="col-md-2">
-      <%= link_to "投稿する", new_grant_path, class: 'btn btn-md btn-custom-color' %>
+      <%= link_to "新規投稿フォーム", new_grant_path, class: 'btn btn-md btn-custom-color' %>
     </div>
   <% end %>
   <div class="col-md-2">
