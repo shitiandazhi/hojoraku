@@ -2,6 +2,8 @@ class Tag < ApplicationRecord
 
   has_many :grants, dependent: :destroy
 
+validates :name, presence: true
+
   def self.looks(search, word)
     if search == "perfect_match"
       @tag = Tag.where("name LIKE?", "#{word}")

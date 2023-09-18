@@ -12,7 +12,7 @@ before_action :load_tags, only: [:index, :create, :update]
        render :index
     else
        @tags = Tag.all
-        redirect_to admin_tags_path
+        redirect_to admin_tags_path, alert: "登録に失敗しました。"
     end
   end
 
