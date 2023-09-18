@@ -77,7 +77,7 @@
         <% else %>
           <td style="color: black;">
            <% @the_week_before = @this_week_grant / @last_week_grant %>
-              <%= number_with_precision(@the_week_before * 100, precision: 2) %>
+              <%= number_with_precision(@the_week_before * 100, precision: 2) %>%
           </td>
         <% end %>
       </tr>
