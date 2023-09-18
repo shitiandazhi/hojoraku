@@ -14,8 +14,12 @@ class Public::UsersController < ApplicationController
 
   def update
     user = current_user
-    user.update(user_params)
-    redirect_to user_path
+    if user.update(user_params)
+        redirect_to user_path(user)
+    else
+      flash[:alert] = "プロフィールの更新ができませんでした。入力内容をご確認のうえ再度お試しください"
+        redirect_to request.referer
+    end
   end
 
   def withdraw
@@ -36,9 +40,8 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.guest_user?
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user) , alert: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-
 end
 

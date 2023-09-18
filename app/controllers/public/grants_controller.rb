@@ -23,7 +23,7 @@ class Public::GrantsController < ApplicationController
 
   if params[:post]
     if @grant.save(context: :publicize)
-      redirect_to grant_path(@grant), notice: "投稿成功！"
+      redirect_to grant_path(@grant), notice: "投稿に成功しました"
     else
       flash.now[:alert] = "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       puts @grant.errors.full_messages
