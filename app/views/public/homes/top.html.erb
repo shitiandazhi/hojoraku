@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container text-center">
   <h1 class="text-center py-5" style="color: white;">「hojoraku」とは？</h1>
  <p class="text-center" style="color: white; font-size: 20px;">
   元銀行員が作成した、小規模事業者・個人事業主の方に向けた、情報共有と申請支援を一体化したプラットホームです。
@@ -44,7 +44,7 @@
           <th style="color: white;">タグ</th>
           <th style="color: white;">申請経緯</th>
           <th style="color: white;">申請状況</th>
-          <th style="color: white;">コメント</th>
+          <th style="color: white;">コメント数</th>
           <th style="color: white;">いいね</th>
         </tr>
       </thead>
@@ -59,8 +59,7 @@
             <td id="favorite-btn_<%= grant.id %>">
               <%= render "public/favorites/btn", grant: grant %></td>
             <td>
-              <div class="d-flex align-items-center">
-              </div>
+
             </td>
           </tr>
         <% end %>
