@@ -1,4 +1,4 @@
-# hojoraku2
+# hojoraku
 
 ### サイト概要
 
