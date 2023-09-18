@@ -59,17 +59,22 @@
     </div>
   </div>
 
-  <div class="row mt-3">
+ <div class="row mt-3">
+  <div class="col-md-2">
+    <%= link_to "一覧を見る", grants_path, class: "btn btn-primary btn-sm btn-custom-color" %>
+  </div>
+  <% if user_signed_in? %>
     <div class="col-md-2">
-      <strong>投稿履歴</strong>
+      <%= link_to "投稿する", new_grant_path, class: 'btn btn-md btn-custom-color' %>
     </div>
-    <div class="col-md-2">
-      <%= link_to "一覧を見る", grants_path, class: "btn btn-primary btn-sm btn-custom-color" %>
-    </div>
-    <% if user_signed_in? %>
-      <div class="col-lg-3">
-        <%= link_to "投稿する", new_grant_path, class: 'btn btn-md btn-custom-color' %>
-      </div>
-    <% end %>
+  <% end %>
+  <div class="col-md-2">
   </div>
 </div>
+　<div class="row mt-3">
+  <div class="col-md-12">
+    <strong class="h4">投稿履歴一覧</strong>
+  </div>
+</div>
+
+<%= render 'public/grants/index', grants: @grants, user: @user %>

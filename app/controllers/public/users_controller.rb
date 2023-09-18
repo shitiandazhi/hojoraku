@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+     @grants = Grant.where(user_id: @user).order(created_at: :desc).page(params[:page])
   end
 
   def edit
