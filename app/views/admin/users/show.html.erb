@@ -36,7 +36,6 @@
             <th class="text-left text-white">メールアドレス</th>
             <td class="text-white"><%= @user.email %></td>
           </tr>
-
           <tr>
            <th class="text-left text-white">会員ステータス</th>
               <% if @user.is_deleted == true %>
@@ -46,15 +45,17 @@
               <% end %>
           </tr>
         </table>
-        <div class="form-group">
+           <tr>
+        <th class="form-group">
           <%= f.label :"会員ステータス", class:"col-4 text-white" %>
           <%= f.radio_button :is_deleted, false %>
           <%= f.label :is_deleted, "有効", class: "text-white" %>
           <%= f.radio_button :is_deleted, true %>
           <%= f.label :is_deleted, "退会", class: "text-white" %>
-        </div>
+        </th>
+           </tr>
         <div class="form-group col-11 d-flex justify-content-around">
-          <%= f.submit '変更を保存', class: "btn btn-custom-color" %>
+          <%= f.submit '変更を保存', class: "btn btn-success" %>
         </div>
       <% end %>
     </div>
