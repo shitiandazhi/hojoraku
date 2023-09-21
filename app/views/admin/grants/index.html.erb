@@ -1,11 +1,17 @@
+<head>
+   <!-- Chart.jsをCDNから読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 <div class="container text-center" style="background-color: #f0f6fa; padding: 20px;">
-  <h1 class="py-5" style="color: #3498db;">投稿一覧</h1>
+  　<h1 class="py-5" style="color: #3498db;">投稿一覧</h1>
 
   <div class="row justify-content-center">
     <div class="dropdown col-lg-3">
       <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <% @tags.each do |tag| %>
+        <li>
           <a><%= link_to tag.name, grants_path(tag_id: tag.id), class: "text-decoration-none text-dark rounded p-2", style: "background-color: #d1d8e0;" %></a>
+        </li>
         <% end %>
       </div>
     </div>
@@ -84,12 +90,8 @@
     </tbody>
     </table>
     <title>週ごとの投稿数</title>
-    
-  <!-- Chart.jsをCDNから読み込む -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- <!-- グラフ用の空のキャンバスを追加 -->
 <canvas id="weekly-post-chart" width="400" height="200"></canvas>
-
+</div>
 <script>
   // グラフデータをJavaScript変数に保存
   var chartData = {
@@ -120,10 +122,11 @@
       }
     });
   }
-
   // ページが読み込まれたときにグラフを描画
   window.onload = renderChart;
 </script>
+
 </body>
 </html>
+ </div>
  </div>
