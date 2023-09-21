@@ -84,42 +84,46 @@
     </tbody>
     </table>
     <title>週ごとの投稿数</title>
+    
   <!-- Chart.jsをCDNから読み込む -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <canvas id="weekly-post-chart" width="400" height="200"></canvas>
+ <!-- グラフ用の空のキャンバスを追加 -->
+<canvas id="weekly-post-chart" width="400" height="200"></canvas>
 
-  <script>
-    // グラフデータ
-    var data = {
-       labels: ["先々週", "先週", "今週", /* 週ごとのラベルを追加 */],
-      datasets: [{
-        label: "週ごとの投稿数",
-        data: [<%@two_weeks_ago_grant%>, <%= @last_week_grant %>, <%= @this_week_grant %>, /* 週ごとのデータを追加 */],
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1
-      }]
-    };
+<script>
+  // グラフデータをJavaScript変数に保存
+  var chartData = {
+    labels: ["先々週", "先週", "今週"], // 週ごとのラベル
+    datasets: [{
+      label: "週ごとの投稿数",
+      data: [<%= @two_weeks_ago_grant %>, <%= @last_week_grant %>, <%= @this_week_grant %>], // 週ごとのデータ
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgba(75, 192, 192, 1)",
+      borderWidth: 1
+    }]
+  };
 
-    // グラフ設定
-    var options = {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    };
-
-    // グラフを描画
+  // グラフを描画する関数
+  function renderChart() {
     var ctx = document.getElementById('weekly-post-chart').getContext('2d');
     var chart = new Chart(ctx, {
       type: 'bar', // 折れ線グラフにする場合は 'line' に変更
-      data: data,
-      options: options
+      data: chartData,
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
     });
-  </script>
+  }
+
+  // ページが読み込まれたときにグラフを描画
+  window.onload = renderChart;
+</script>
 </body>
 </html>
  </div>
