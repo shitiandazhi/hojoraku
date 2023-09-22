@@ -37,9 +37,11 @@
       <% end %>
     </div>
   </div>
+  <%= paginate @grants %>
+ </div>
 
-   <%= paginate @grants %>
 
+<div class="container text-center" style="background-color: #f0f6fa; padding: 20px;">
  <h4 style="color: black;">投稿数の前日比・前週比</h4>
 <div class="table_width">
   <table class="table table-bordered">
@@ -126,7 +128,4 @@
   window.onload = renderChart;
 </script>
 
-</body>
-</html>
- </div>
- </div>
+  </div>
