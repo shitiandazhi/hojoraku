@@ -1,0 +1,88 @@
+<div class="container text-center" style="background-color: #f0f6fa; padding: 20px;">
+ <h4 style="color: black;">投稿数の前日比・前週比</h4>
+<div class="table_width">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="color: black;">今日の投稿</th>
+        <th style="color: black;">昨日の投稿</th>
+        <th style="color: black;">前日比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color: black;"><%= @today_grant %></td>
+        <td style="color: black;"><%= @yesterday_grant %></td>
+        <% if @yesterday_grant == 0 %>
+          <td style="color: black;">前日の投稿はなし</td>
+        <% else %>
+          <td style="color: black;">
+            <% @the_day_before = @today_grant / @yesterday_grant %>
+            <%= (@the_day_before * 100).round %>%
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th style="color: black;">今週の投稿</th>
+        <th style="color: black;">先週の投稿</th>
+        <th style="color: black;">先週比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color: black;"><%= @this_week_grant %></td>
+        <td style="color: black;"><%= @last_week_grant %></td>
+        <% if @last_week_grant == 0 %>
+          <td style="color: black;">先週の投稿はなし</td>
+        <% else %>
+          <td style="color: black;">
+           <% @the_week_before = @this_week_grant / @last_week_grant %>
+              <%= number_with_precision(@the_week_before * 100, precision: 2) %>%
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+    </table>
+    <title>週ごとの投稿数</title>
+<canvas id="weekly-post-chart" width="400" height="200"></canvas>
+</div>
+<script>
+  // グラフデータをJavaScript変数に保存
+  var chartData = {
+    labels: ["先々週", "先週", "今週"], // 週ごとのラベル
+    datasets: [{
+      label: "週ごとの投稿数",
+      data: [<%= @two_weeks_ago_grant %>, <%= @last_week_grant %>, <%= @this_week_grant %>], // 週ごとのデータ
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgba(75, 192, 192, 1)",
+      borderWidth: 1
+    }]
+  };
+
+  // グラフを描画する関数
+  function renderChart() {
+    var ctx = document.getElementById('weekly-post-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'bar', // 折れ線グラフにする場合は 'line' に変更
+      data: chartData,
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+  // ページが読み込まれたときにグラフを描画
+  window.onload = renderChart;
+</script>
+
+  </div>
