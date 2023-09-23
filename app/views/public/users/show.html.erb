@@ -5,25 +5,13 @@
     </div>
 
   <div class="row mb-3">
-  <div class="col-md-2">
+   <div class="col-md-2">
     <strong>登録情報</strong>
-  </div>
-  <style>
-  .btn-custom-color {
-    background-color: #007bff; /* 青色 */
-    border: 2px solid #3498db; /* 枠線を付ける */
-    color: #ffffff; /* 白色のテキスト */
-  }
-
-  .btn-custom-color:hover {
-    background-color: #2980b9; /* ホバー時の色 */
-    border-color: #2980b9; /* ホバー時の枠線色 */
-  }
-</style>
-  <div class="col-md-4">
+   </div>
+   <div class="col-md-4">
     <%= link_to "編集する", edit_user_path, class: "btn btn-sm btn-custom-color" %>
+   </div>
   </div>
-</div>
 
 
  <div class="row">
@@ -76,3 +64,16 @@
 </div>
 
 <%= render 'public/grants/index', grants: @grants, user: @user %>
+
+<style>
+  .btn-custom-color {
+    background-color: #007bff; /* 青色 */
+    border: 2px solid #3498db; /* 枠線を付ける */
+    color: #ffffff; /* 白色のテキスト */
+  }
+
+  .btn-custom-color:hover {
+    background-color: #2980b9; /* ホバー時の色 */
+    border-color: #2980b9; /* ホバー時の枠線色 */
+  }
+</style>
