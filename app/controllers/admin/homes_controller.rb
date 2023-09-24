@@ -1,4 +1,6 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
+
   def top
     @users = User.order(created_at: :desc).page(params[:page]).per(8)
     @grants = Grant.all

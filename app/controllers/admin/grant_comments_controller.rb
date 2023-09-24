@@ -1,4 +1,5 @@
 class Admin::GrantCommentsController < ApplicationController
+before_action :authenticate_admin!
 
    def destroy
     GrantComment.find(params[:id]).destroy

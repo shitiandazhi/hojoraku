@@ -1,4 +1,5 @@
 class Admin::TagsController < ApplicationController
+before_action :authenticate_admin!
 before_action :load_tags, only: [:index, :create, :update]
    def index
     @tags = Tag.all
