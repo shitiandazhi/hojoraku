@@ -6,7 +6,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><span class="text-white"><%= user.name %></span></td>
+          <td><span class="text-white"><%= link_to user.name, grants_path(grant) %></span></td>
         </tr>
       <% end %>
     </tbody>
