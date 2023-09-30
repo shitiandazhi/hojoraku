@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-
  before_action :authenticate_user!, except: [:index]
  before_action :ensure_guest_user, only: [:edit]
 
