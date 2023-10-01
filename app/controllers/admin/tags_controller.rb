@@ -1,10 +1,10 @@
 class Admin::TagsController < ApplicationController
 before_action :authenticate_admin!
 before_action :load_tags, only: [:index, :create, :update]
-   def index
+  def index
     @tags = Tag.all
     @tag = Tag.new
-   end
+  end
 
   def create
     @tag = Tag.new(tag_params)
@@ -45,4 +45,5 @@ before_action :load_tags, only: [:index, :create, :update]
   def load_tags
     @tags = Tag.all
   end
+
 end
