@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
   validates :company_from, presence: true
   validates :name, presence: true
-  validates :name_kana, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :email, presence: true
   validates :post_code, presence: true, format: { with: /\A\d{7}\z/ }
   validates :address, presence: true
-  validates :phonenumber, presence: true
+  validates :phonenumber, presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
 
 
   def active_for_authentication?
