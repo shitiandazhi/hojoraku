@@ -4,7 +4,6 @@
     <tr>
       <td>
         <%= link_to user_path(grant_comment.user) do %>
-          <%= image_tag grant_comment.user.get_profile_image, size: "50x50" %><br>
           <%= grant_comment.user.name %>
         <% end %>
       </td>
