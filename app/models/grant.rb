@@ -3,6 +3,7 @@ class Grant < ApplicationRecord
   belongs_to :tag
 
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :grant_comments, dependent: :destroy
   has_many :grant_tags, dependent: :destroy
   has_one_attached :image

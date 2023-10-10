@@ -3,6 +3,12 @@ class Public::GrantsController < ApplicationController
   before_action :correct_grant, only: [:edit, :update, :destroy]
 
   def index
+     to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @grant = Grant.includes(:favorited_users).
+      sort_by {|x|
+        x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }.reverse
     @grants = Grant.page(params[:page])
     @grant_comments = GrantComment.page(params[:page])
   end
