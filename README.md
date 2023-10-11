@@ -26,7 +26,7 @@
 ![image](https://github.com/shitiandazhi/hojoraku2/assets/135299404/ad138b41-664c-4c85-99d8-daabce2fc103)
 
 #### 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(AmazonLinux2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
